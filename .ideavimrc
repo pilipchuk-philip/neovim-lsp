@@ -1,0 +1,41 @@
+"""""""""""""""""""""""
+" Splits
+"""""""""""""""""""""""
+nmap sv :vsplit<CR>
+nmap ss :split<CR>
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <c-k> <c-w>k
+
+nnoremap sl <c-w>l
+nnoremap sj <c-w>j
+nnoremap sh <c-w>h
+nnoremap sk <c-w>k
+
+
+"""""""""""""""""""""""
+" search
+"""""""""""""""""""""""
+set incsearch
+
+"""""""""""""""""""""""
+" Numbers
+"""""""""""""""""""""""
+set relativenumber
+set number
+
+let mapleader = "\<Space>"
+map <Leader>q :q<CR>
+nmap ; :
+
+
+" don't overwrite register when pasting over selection
+vnoremap p pgvy
+
+nmap gr :action GotoDeclaration<CR>
+nmap gs :vsp<CR>:wincmd h<CR>:action GotoDeclaration<CR>
+
+
+" nmap gs :action GotoDeclaration<CR>:wincmd v<CR>
+

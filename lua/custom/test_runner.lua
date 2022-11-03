@@ -1,0 +1,9 @@
+-- Получаем рабочую директорию проекта
+-- local project_root = vim.fn.getcwd()
+-- Получаем путь к текущему файлу в буфере
+-- local current_file = vim.fn.expand('%')
+-- Определяем относительный путь
+-- local relative_path = vim.fn.fnamemodify(current_file, ':.')
+-- Копируем относительный путь в буфер обмена
+-- Текст выделенного фрагмента
+-- local text = vim.getVisualSelection()
