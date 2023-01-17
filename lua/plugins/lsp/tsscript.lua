@@ -1,4 +1,10 @@
-require'lspconfig'.tsserver.setup{}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.tsserver.setup{
+    capabilities = capabilities,
+}
+
 require "lsp_signature".setup({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = {

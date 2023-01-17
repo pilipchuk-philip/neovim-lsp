@@ -19,17 +19,23 @@ require('plugins.ui.illuminate')
 require('plugins.ui.bars')
 require('plugins.ui.trouble')
 require('plugins.ui.vista')
+require('plugins.ui.transporency')
+require('plugins.ui.wilder')
 
 -----------------------------------------------------------
 -- Languages LSP
 -----------------------------------------------------------
 require('plugins.lsp.lua_lsp')
 require('plugins.lsp.pyright')
-require('plugins.lsp.go')
+require('plugins.lsp.bash')
+require('plugins.lsp.sql')
+require('plugins.lsp.emmet')
+require('plugins.lsp.rust')
 require('plugins.lsp.jsonls')
 require('plugins.lsp.dockerls')
 require('plugins.lsp.html')
 require('plugins.lsp.css')
+require('plugins.lsp.yaml')
 require('plugins.lsp.tsscript')
 
 -----------------------------------------------------------
@@ -37,3 +43,4 @@ require('plugins.lsp.tsscript')
 -----------------------------------------------------------
 require('keymaps.base')
 require('keymaps.plugins')
+

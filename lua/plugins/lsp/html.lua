@@ -5,3 +5,10 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require'lspconfig'.html.setup {
   capabilities = capabilities,
 }
+
+require "lsp_signature".setup({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+      border = "rounded"
+    }
+})

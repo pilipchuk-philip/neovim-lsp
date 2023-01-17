@@ -38,3 +38,4 @@ cmd[[ set wildignore+=*__pycache__,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS
 -- Nerdtree config for wildignore
 cmd[[ let NERDTreeRespectWildIgnore=1 ]]
 
+

@@ -1,7 +1,10 @@
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local navic = require("nvim-navic")
 require'lspconfig'.pyright.setup{
-
-on_attach = function(client, bufnr)
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
         navic.attach(client, bufnr)
     end
 }
