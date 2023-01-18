@@ -30,7 +30,7 @@ cmd[[ nnoremap <silent>gd :lua vim.lsp.buf.definition()<CR> ]]
 -----------------------------------------------------------------------
 -- Hover Doc
 -----------------------------------------------------------------------
--- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 
 -----------------------------------------------------------------------
 -- TODO
@@ -61,6 +61,7 @@ cmd [[ nnoremap <C-l> :Telescope git_status<CR> ]]
 -----------------------------------------------------------------------
 cmd[[ nnoremap <silent>gr :lua require('telescope.builtin').lsp_references()<CR> ]]
 cmd[[ nnoremap <silent>K :Lspsaga hover_doc<CR> ]]
+
 
 -----------------------------------------------------------------------
 -- [LSP SAGA]
