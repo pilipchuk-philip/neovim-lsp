@@ -31,5 +31,6 @@ require('nvim-treesitter.configs').setup({
         "lua",
         "python",
         "yaml",
+        "markdown",
 	},
 })

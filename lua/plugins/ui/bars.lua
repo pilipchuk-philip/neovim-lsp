@@ -31,8 +31,8 @@ require'bufferline'.setup {
   },
 
   -- Excludes buffers from the tabline
-  exclude_ft = {'javascript'},
-  exclude_name = {'package.json'},
+  -- exclude_ft = {'javascript'},
+  -- exclude_name = {'package.json'},
 
   -- Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
   hide = {extensions = true, inactive = false},
@@ -63,7 +63,7 @@ require'bufferline'.setup {
 
   -- If true, new buffers will be inserted at the start/end of the list.
   -- Default is to insert after current buffer.
-  insert_at_end = false,
+  insert_at_end = true,
   insert_at_start = false,
 
   -- Sets the maximum padding width with which to surround each tab
@@ -95,4 +95,5 @@ require("feline").setup()
 local navic = require("nvim-navic")
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
-
+vim.cmd[[set hidden]]
+vim.cmd[[let g:netrw_bufsettings = 'nohidden noma nomod nonu nowrap ro buflisted']]
