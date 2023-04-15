@@ -20,26 +20,24 @@ return require('packer').startup(function()
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("todo-comments").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
-        -- TODO
+        require("todo-comments").setup {}
       end
     }
-    -- Highlight Same
-    use 'RRethy/vim-illuminate'
+
     -------------------------------------------------
     -- Core Plugins
     -------------------------------------------------
     -- Russian comand line expired
     use 'powerman/vim-plugin-ruscmd'
     use 'tpope/vim-surround'
+
     -- Может повторять через . vimsurround
     use 'tpope/vim-repeat'
+
     -- Закрывает автоматом скобки
     use 'cohama/lexima.vim'
+
+    -- Коменты
     use 'b3nj5m1n/kommentary'
     use "lukas-reineke/indent-blankline.nvim"
     -----------------------------------------------------------
@@ -96,7 +94,6 @@ return require('packer').startup(function()
         "onsails/diaglist.nvim",
         "onsails/lspkind-nvim",
     },
-    -- config = function() require('plugins.cmp') end,
     })
 
 
@@ -146,6 +143,8 @@ return require('packer').startup(function()
     })
     -----------------------------------------------------------
     --------------------- UI HELPERS --------------------------
+    -- Highlight Same
+    use 'RRethy/vim-illuminate'
     -----------------------------------------------------------
     -- => Should be on plugin.ui.name
     -----------------------------------------------------------
@@ -182,7 +181,6 @@ return require('packer').startup(function()
         requires = "neovim/nvim-lspconfig"
     }
 
-    use 'feline-nvim/feline.nvim'
     -----------------------------------------------------------
     -- Tabs Barline
     -----------------------------------------------------------
