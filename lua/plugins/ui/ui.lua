@@ -1,17 +1,59 @@
+-- -------------------------------------------
+-- Variables
+-- -------------------------------------------
+local cmd = vim.cmd             -- execute Vim commands
+local exec = vim.api.nvim_exec  -- execute Vimscript
+local g = vim.g                 -- global variables
+local opt = vim.opt             -- global/buffer/windows-scoped options
+
+---------------------------------------------
+-- Theme
+---------------------------------------------
+cmd[[colorscheme tokyonight-moon]]
+
+g.tokyonight_style = "storm"
+g.tokyonight_italic_comments = true
+g.tokyonight_italic_keywords = true
+g.tokyonight_transparent_sidebar = false
+g.tokyonight_dark_sidebar = true
+g.tokyonight_lualine_bold = true
+g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+
+---------------------------------------------
+-- Base
+---------------------------------------------
+opt.cursorline = true         -- Подсветка строки с курсором
+opt.number = true             -- Включаем нумерацию строк
+opt.termguicolors = true      --  24-bit RGB colors
+
+---------------------------------------------
+-- Base
+---------------------------------------------
+cmd[[ set wildignore+=*__pycache__,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.* ]]
+
+-- Nerdtree config for wildignore
+cmd[[ let NERDTreeRespectWildIgnore=1 ]]
+
+---------------------------------------------
+-- Plugins
+---------------------------------------------
+
 local navic = require("nvim-navic")
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 vim.cmd[[set hidden]]
 vim.cmd[[let g:netrw_bufsettings = 'nohidden noma nomod nonu nowrap ro buflisted']]
 
-require"fidget".setup{}
+require("fidget").setup{}
+
+require("lsp_signature").setup {}
 
 require("indent_blankline").setup {
     show_current_context = true,
     show_current_context_start = true,
 }
 
-require('illuminate').configure({
+require("illuminate").configure({
      providers = {
         'lsp',
         'treesitter',
@@ -32,7 +74,7 @@ require('illuminate').configure({
     large_file_overrides = nil,
     min_count_to_highlight = 1,
 })
-require('lualine').setup {
+require("lualine").setup {
     extensions = {'quickfix', 'symbols-outline'}
 }
 
@@ -59,6 +101,9 @@ require("transparent").setup({
     extra_groups = {}, -- table: additional groups that should be cleared
     exclude_groups = {}, -- table: groups you don't want to clear
 })
+----------------------------------------------------
+-- Wilder
+----------------------------------------------------
 
 require("wilder").setup({
     modes = {':', '/', '?'},
