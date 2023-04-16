@@ -1,171 +1,97 @@
 vim.cmd [[packadd packer.nvim]]
 
+----------------------------------------------
+-- TODO
+--  \
+--   - TODO
+----------------------------------------------
+
 return require('packer').startup(function()
     -----------------------------------------------------------
     -- Packer
     -----------------------------------------------------------
     use 'wbthomason/packer.nvim'
 
-    -- Bookmarks
-    use 'MattesGroeger/vim-bookmarks'
-    -- TODO Comments
-    use {
-      "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = function()
-        require("todo-comments").setup {}
-      end
-    }
-
-    -------------------------------------------------
+    -----------------------------------------------------------
     -- Core Plugins
-    -------------------------------------------------
-    -- Russian comand line expired
-    use 'powerman/vim-plugin-ruscmd'
-    use 'tpope/vim-surround'
-
-    -- Может повторять через . vimsurround
-    use 'tpope/vim-repeat'
-
-    -- Закрывает автоматом скобки
-    use 'cohama/lexima.vim'
-
-    -- Коменты
-    use 'b3nj5m1n/kommentary'
-    use "lukas-reineke/indent-blankline.nvim"
     -----------------------------------------------------------
-    -- SEARCH
-    -----------------------------------------------------------
+    use 'tpope/vim-surround' -- Surround
+    use 'tpope/vim-repeat' -- Может повторять через . vimsurround
+    use 'cohama/lexima.vim' -- Закрывает автоматом скобки
+    use 'b3nj5m1n/kommentary' -- Коменты
+    use 'powerman/vim-plugin-ruscmd' -- Russian comand line expired
+    use 'MattesGroeger/vim-bookmarks' -- Bookmarks
     use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = {{
-    'nvim-lua/popup.nvim',
-    'nvim-telescope/telescope-media-files.nvim'
-    }}
+        'nvim-telescope/telescope.nvim', tag = '0.1.0', -- Search
+        requires = {
+            'nvim-lua/popup.nvim',
+            'nvim-telescope/telescope-media-files.nvim'
+        }
     }
+    use {'kkoomen/vim-doge', run = ':call doge#install()'} -- generate doc
     -----------------------------------------------------------
-    -- Code Highlight
+    -- CODE
     -----------------------------------------------------------
     use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+        'nvim-treesitter/nvim-treesitter', -- Code Highlight
+        run = ':TSUpdate'
     }
-    use 'RRethy/nvim-treesitter-textsubjects'
-    -----------------------------------------------
-    --  LSP
-    -----------------------------------------------
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
-    use 'j-hui/fidget.nvim'
-    --  Auto Completion Utils
+    use({
+        "hrsh7th/nvim-cmp",  -- Autocomplete
+        requires = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "onsails/diaglist.nvim",
+            "onsails/lspkind-nvim",
+        },
+    })
     use {
-    "ray-x/lsp_signature.nvim",
-    }
-    -----------------------------------------------
-    -- Snippets
-    -----------------------------------------------
-    use {
-    "L3MON4D3/LuaSnip",
-    config = function() require('plugins.snippets.snippets') end
+        "L3MON4D3/LuaSnip",  -- Snippets
+        config = function() require('plugins.snippets.snippets') end
     }
     use "rafamadriz/friendly-snippets"
-    -----------------------------------------------
-    -- CMP
-    -----------------------------------------------
-    use({
-    "hrsh7th/nvim-cmp",
-    -- Sources for nvim-cmp
-    requires = {
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-path",
-        "saadparwaiz1/cmp_luasnip",
-        "onsails/diaglist.nvim",
-        "onsails/lspkind-nvim",
-    },
-    })
-
-
+    use 'j-hui/fidget.nvim' -- status for loading plugins
+    use "ray-x/lsp_signature.nvim" -- Show function signature
+    use 'neovim/nvim-lspconfig' -- Lsp config files
+    use 'williamboman/nvim-lsp-installer' -- Lsp installer
+    use 'stsewd/sphinx.nvim' -- Sphinx intergration
     -----------------------------------------------------------
-    --------------------- CODE HELPERS ------------------------
-    -----------------------------------------------------------
-    -- => Should be on plugin.code.name
-    -----------------------------------------------------------
-    -- Gist
-    -----------------------------------------------------------
-    use 'mattn/webapi-vim'
-    use 'mattn/vim-gist'
-
-    -------------------------------------------------
     -- GIT
-    -------------------------------------------------
-    use 'TimUntersberger/neogit' -- Git Changes
+    -----------------------------------------------------------
+    use 'mattn/webapi-vim' -- Git Gist
+    use 'mattn/vim-gist' -- Git Gist
+    use 'TimUntersberger/neogit' -- Git Client
     use 'lewis6991/gitsigns.nvim' -- Git Blame
-    use 'airblade/vim-gitgutter'
+    use 'airblade/vim-gitgutter' -- Git Gutter
     use 'sindrets/diffview.nvim' -- Diff view
-
     -----------------------------------------------------------
-    -- Documentation AutoGenerate
+    -- UI
     -----------------------------------------------------------
-    use {
-    'kkoomen/vim-doge',
-    run = ':call doge#install()'
-    }
-    -----------------------------------------------------------
-    -- Vim Sphinx intergration
-    -----------------------------------------------------------
-    use 'stsewd/sphinx.nvim'
-
-    --------------------- UI HELPERS --------------------------
-    -- Highlight Same
-    use 'RRethy/vim-illuminate'
-    -----------------------------------------------------------
-    -- => Should be on plugin.ui.name
-    -----------------------------------------------------------
-    use 'folke/tokyonight.nvim'
-    use 'ryanoasis/vim-devicons'
-    use 'kyazdani42/nvim-web-devicons'
+    use "lukas-reineke/indent-blankline.nvim" -- Выделение отступов
+    use 'RRethy/vim-illuminate' -- Highlight Same
+    use 'folke/tokyonight.nvim' -- Theme Tokio Night
+    use 'ryanoasis/vim-devicons' -- Icons
+    use 'kyazdani42/nvim-web-devicons' -- Icons
     use 'nvim-lua/plenary.nvim'
-    -- NERDTree
-    use {'preservim/nerdtree', }
-    -- Подсветка парных скобок
-    use {'andymass/vim-matchup', event = 'VimEnter'}
-    -- Нижняя панель
-    use {'nvim-lualine/lualine.nvim',}
-    -- TAGS панель
-    use 'simrat39/symbols-outline.nvim'
-    -- Считает кол-во совпадений при поиске
-    use 'google/vim-searchindex'
-    -----------------------------------------------------------
-    -- Wilder
-    -----------------------------------------------------------
+    use 'preservim/nerdtree' -- NerdTree
+    use {'andymass/vim-matchup', event = 'VimEnter'} -- Подсветка парных скобок
+    use 'nvim-lualine/lualine.nvim' -- Нижняя панель
+    use 'google/vim-searchindex'  -- Считает кол-во совпадений при поиске
     use {
-        'gelguy/wilder.nvim',
-        requires = {
-            "kyazdani42/nvim-web-devicons", -- optional
-        },
+        'gelguy/wilder.nvim',  -- Wilder
+        requires = { "kyazdani42/nvim-web-devicons",},
     }
-    -----------------------------------------------------------
-    -- Tabs Barline
-    -----------------------------------------------------------
-    use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
-    -----------------------------------------------------------
-    -- NVIM Transporent
-    -----------------------------------------------------------
-    use 'xiyaowong/nvim-transparent'
-    -----------------------------------------------------------
-    -- Navic [ Code Breadcrambs ]
-    -----------------------------------------------------------
+    use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'} -- Tabs Barline
+    use 'xiyaowong/nvim-transparent' --Transporency
     use {
-        "SmiteshP/nvim-navic",
+        "SmiteshP/nvim-navic",    -- Navic [ Code Breadcrambs ]
         requires = "neovim/nvim-lspconfig"
     }
-    -----------------------------------------------------------
-    -- Barbecue  ?? IS IT NAVIC COPY?    Breadcrambs
-    -----------------------------------------------------------
     use({
       "utilyre/barbecue.nvim",
       requires = {

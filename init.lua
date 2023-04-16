@@ -13,8 +13,6 @@ require('configs.plugins.langs.treesitter')
 require('configs.plugins.search.telescope')
 require('configs.plugins.git.gitsings')
 require('configs.plugins.ui.ui')
-----------------Lsp languages------------------------------
-require('configs.plugins.lsp_languages.supported_languages')
 -----------------------------------------------------------
 -- Plugins
 -----------------------------------------------------------
