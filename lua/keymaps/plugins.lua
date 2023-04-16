@@ -57,11 +57,6 @@ cmd [[ nnoremap <C-l> :Telescope git_status<CR> ]]
 cmd[[ nnoremap <silent>gr :lua require('telescope.builtin').lsp_references()<CR> ]]
 
 -----------------------------------------------------------------------
--- Outline
------------------------------------------------------------------------
-cmd [[ nnoremap <C-o> :Vista nvim_lsp<CR> ]]
-
------------------------------------------------------------------------
 -- EasyAlign
 -----------------------------------------------------------------------
 cmd [[ nnoremap <C-d> :DogeGenerate<CR> ]]

@@ -132,8 +132,6 @@ return require('packer').startup(function()
     use 'nvim-lua/plenary.nvim'
     -- NERDTree
     use {'preservim/nerdtree', }
-    -- Code tree left
-    use 'liuchengxu/vista.vim'
     -- Подсветка парных скобок
     use {'andymass/vim-matchup', event = 'VimEnter'}
     -- Нижняя панель
