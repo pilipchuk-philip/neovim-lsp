@@ -60,13 +60,6 @@ cmd [[ nnoremap <C-l> :Telescope git_status<CR> ]]
 -- [Telescope] Find References
 -----------------------------------------------------------------------
 cmd[[ nnoremap <silent>gr :lua require('telescope.builtin').lsp_references()<CR> ]]
-cmd[[ nnoremap <silent>K :Lspsaga hover_doc<CR> ]]
-
-
------------------------------------------------------------------------
--- [LSP SAGA]
------------------------------------------------------------------------
-keymap({"n","v"}, "<CR>", "<cmd>Lspsaga code_action<CR>", { silent = true })
 
 -----------------------------------------------------------------------
 -- Outline

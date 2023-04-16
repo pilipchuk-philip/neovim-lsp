@@ -126,14 +126,7 @@ return require('packer').startup(function()
     -- Vim Sphinx intergration
     -----------------------------------------------------------
     use 'stsewd/sphinx.nvim'
-    -----------------------------------------------------------
-    -- lsp saga
-    -----------------------------------------------------------
-    use({
-        "glepnir/lspsaga.nvim",
-        branch = "main",
-    })
-    -----------------------------------------------------------
+
     --------------------- UI HELPERS --------------------------
     -- Highlight Same
     use 'RRethy/vim-illuminate'

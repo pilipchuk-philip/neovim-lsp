@@ -1,8 +1,0 @@
-# Requirements
-
-# Install
-
-# TODO
-- SNIPPETS
-
-

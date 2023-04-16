@@ -11,10 +11,9 @@ require('configs.ui')
 require('plugins.autocomplete.cmp')
 require('plugins.search.telescope')
 require('plugins.treesitter.treesitter')
-
 require('plugins.snippets.snippets') -- TODO DELETE
+-----------------------------------------------------------
 require('plugins.ui.fidget') -- status load for plugins
-require('plugins.code.lsp_saga')
 require('plugins.ui.gitsings') -- git blame
 require('plugins.ui.illuminate') -- autohighlight words
 require('plugins.ui.navic_bar') -- breadcrumbs
