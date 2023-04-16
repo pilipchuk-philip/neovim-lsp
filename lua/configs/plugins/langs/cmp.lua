@@ -1,12 +1,10 @@
-local fn = vim.fn
+require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip').filetype_extend("python", {'pytorch'})
 
--- local Utils = require('utils')
+local fn = vim.fn
 local luasnip = require('luasnip')
 local cmp = require('cmp')
 local lspkind = require('lspkind')
-
--- local exprinoremap = Utils.exprinoremap
-
 local function get_snippets_rtp()
   return vim.tbl_map(function(itm)
     return fn.fnamemodify(itm, ":h")
@@ -14,7 +12,6 @@ local function get_snippets_rtp()
       "package.json", true
   ))
 end
-
 local opts = {
   paths = {
     fn.stdpath('config')..'/snips/',
@@ -25,46 +22,32 @@ local opts = {
 require('luasnip.loaders.from_vscode').lazy_load(opts)
 
 cmp.setup({
-  -- Don't autocomplete, otherwise there is too much clutter
-  -- completion = {autocomplete = { false },},
-
-  -- Don't preselect an option
   preselect = cmp.PreselectMode.None,
-
-  -- Snippet engine, required
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-
   -- lspkind (icons for cmp)
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol', -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+      mode = 'symbol',
+      maxwidth = 50,
+      ellipsis_char = '...',
       before = function (entry, vim_item)
         return vim_item
       end
     })
   },
-  -- Mappings
   mapping = {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
     ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
     ['<C-c>'] = cmp.mapping.close(),
-
-    -- select completion
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     }),
-
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -74,7 +57,6 @@ cmp.setup({
         fallback()
       end
     end,
-
     ['<S-Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -84,13 +66,9 @@ cmp.setup({
         fallback()
       end
     end,
-
-    -- Scroll documentation
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
   },
-
-  -- Complete options from the LSP servers and the snippet engine
   sources = {
     {name = 'nvim_lsp'},
     {name = 'luasnip'},
@@ -98,6 +76,5 @@ cmp.setup({
     {name = 'path'},
     {name = 'buffer'},
     {name = 'spell'},
-    -- {name = 'calc'},
   },
 })
