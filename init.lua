@@ -17,7 +17,6 @@ require('plugins.ui.fidget') -- status load for plugins
 require('plugins.ui.gitsings') -- git blame
 require('plugins.ui.illuminate') -- autohighlight words
 require('plugins.ui.navic_bar') -- breadcrumbs
-require('plugins.ui.trouble') -- TODO DELETE
 require('plugins.ui.vista') -- TODO DELETE
 require('plugins.ui.transporency')
 require('plugins.ui.wilder') -- :list of values

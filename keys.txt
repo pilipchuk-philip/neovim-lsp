@@ -5,7 +5,6 @@ Pannels
 [Bookmarks] (Silent) ma  - open
 [NERDTree] (Silent)  bs  - toggle
 [CheatScheat]        c-h - CheatScheat
-[Trouble] (Silent)   t   - Trouble
 
 
 ------------------------------------------------------------------

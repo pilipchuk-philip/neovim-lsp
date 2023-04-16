@@ -8,13 +8,6 @@ return require('packer').startup(function()
 
     -- Bookmarks
     use 'MattesGroeger/vim-bookmarks'
-    -- Trouble
-    use {
-         "folke/trouble.nvim",
-         config = function()
-         require("trouble").setup {}
-    end
-    }
     -- TODO Comments
     use {
       "folke/todo-comments.nvim",
