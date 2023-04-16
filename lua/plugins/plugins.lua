@@ -132,14 +132,6 @@ return require('packer').startup(function()
     use({
         "glepnir/lspsaga.nvim",
         branch = "main",
-        --[[ config = function()
-            require('lspsaga').setup({
-                -- ui = {
-                    theme = 'round',
-                    border = 'single',
-                -- }
-          })
-        end, ]]
     })
     -----------------------------------------------------------
     --------------------- UI HELPERS --------------------------
@@ -174,14 +166,6 @@ return require('packer').startup(function()
         },
     }
     -----------------------------------------------------------
-    -- Navic [ Code Breadcrambs ]
-    -----------------------------------------------------------
-    use {
-        "SmiteshP/nvim-navic",
-        requires = "neovim/nvim-lspconfig"
-    }
-
-    -----------------------------------------------------------
     -- Tabs Barline
     -----------------------------------------------------------
     use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
@@ -189,7 +173,13 @@ return require('packer').startup(function()
     -- NVIM Transporent
     -----------------------------------------------------------
     use 'xiyaowong/nvim-transparent'
-
+    -----------------------------------------------------------
+    -- Navic [ Code Breadcrambs ]
+    -----------------------------------------------------------
+    use {
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig"
+    }
     -----------------------------------------------------------
     -- Barbecue  ?? IS IT NAVIC COPY?    Breadcrambs
     -----------------------------------------------------------
