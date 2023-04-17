@@ -6,9 +6,9 @@ return require('packer').startup(function()
     -- Core Plugins --
     ------------------
     use "tpope/vim-surround" -- Surround
-    use "tpope/vim-repeat" -- Может повторять через . vimsurround
-    use "cohama/lexima.vim" -- Закрывает автоматом скобки
-    use "b3nj5m1n/kommentary" -- Коменты
+    use "tpope/vim-repeat" -- can repeat . vimsurround
+    use "cohama/lexima.vim" -- Close closures
+    use "b3nj5m1n/kommentary" -- Comments
     use "powerman/vim-plugin-ruscmd" -- Russian comand line expired
     use "MattesGroeger/vim-bookmarks" -- Bookmarks
     use {
@@ -18,7 +18,7 @@ return require('packer').startup(function()
             "nvim-telescope/telescope-media-files.nvim"
         }
     }
-    use {"kkoomen/vim-doge", run = ":call doge#install()"} -- generate doc
+    use {"kkoomen/vim-doge", run = ":call doge#install()"} -- Generate doc
     ------------------
     -- CODE         --
     ------------------
@@ -27,7 +27,7 @@ return require('packer').startup(function()
         run = ":TSUpdate"
     }
     use({
-        "hrsh7th/nvim-cmp",  -- Autocomplete
+        "hrsh7th/nvim-cmp", -- Autocomplete
         requires = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
@@ -45,7 +45,7 @@ return require('packer').startup(function()
         config = function() require('plugins.snippets.snippets') end
     }
     use "rafamadriz/friendly-snippets"
-    use "j-hui/fidget.nvim" -- status for loading plugins
+    use "j-hui/fidget.nvim" -- Status for loading plugins
     use "ray-x/lsp_signature.nvim" -- Show function signature
     use "neovim/nvim-lspconfig" -- Lsp config files
     use "williamboman/nvim-lsp-installer" -- Lsp installer
@@ -62,16 +62,16 @@ return require('packer').startup(function()
     ------------------
     -- UI           --
     ------------------
-    use "lukas-reineke/indent-blankline.nvim" -- Выделение отступов
+    use "lukas-reineke/indent-blankline.nvim" -- Highlight spaces
     use "RRethy/vim-illuminate" -- Highlight Same
     use "folke/tokyonight.nvim" -- Theme Tokio Night
     use "ryanoasis/vim-devicons" -- Icons
     use "kyazdani42/nvim-web-devicons" -- Icons
     use "nvim-lua/plenary.nvim" -- Telescope part
     use "preservim/nerdtree" -- NerdTree
-    use {"andymass/vim-matchup", event = 'VimEnter'} -- Подсветка парных скобок
-    use "nvim-lualine/lualine.nvim" -- Нижняя панель
-    use "google/vim-searchindex"  -- Считает кол-во совпадений при поиске
+    use {"andymass/vim-matchup", event = "VimEnter"} -- Highlight "(
+    use "nvim-lualine/lualine.nvim" -- Bottom panal
+    use "google/vim-searchindex"  -- Count search find
     use {
         "gelguy/wilder.nvim",  -- Wilder
         requires = { "kyazdani42/nvim-web-devicons",},
@@ -79,11 +79,11 @@ return require('packer').startup(function()
     use {"romgrk/barbar.nvim", wants = 'nvim-web-devicons'} -- Tabs Barline
     use "xiyaowong/nvim-transparent" --Transporency
     use {
-        "SmiteshP/nvim-navic",    -- Navic [ Code Breadcrambs ]
+        "SmiteshP/nvim-navic", -- Navic [ Code Breadcrambs ]
         requires = "neovim/nvim-lspconfig"
     }
     use {
-        "utilyre/barbecue.nvim",
+        "utilyre/barbecue.nvim", -- Navic [ Code Breadcrambs ]
         requires = {
             "neovim/nvim-lspconfig",
             "SmiteshP/nvim-navic",
