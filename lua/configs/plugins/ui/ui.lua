@@ -9,7 +9,47 @@ local opt = vim.opt             -- global/buffer/windows-scoped options
 ---------------------------------------------
 -- Theme
 ---------------------------------------------
-cmd[[colorscheme tokyonight-moon]]
+-- cmd[[colorscheme tokyonight-moon]]
+require('github-theme').setup({
+  options = {
+    transparent = true,
+    hide_end_of_buffer = true,
+    hide_nc_statusline = true,
+    styles = {
+      comments = 'italic,bold',
+      functions = 'bold',
+      keywords = 'bold',
+      variables = 'NONE',
+    },
+    darken = {
+      floats = true,
+      sidebars = {
+        enable = true,
+        list = {},
+      },
+    },
+  },
+
+  specs = {
+    -- Change the color of only the 'github_dark' theme's 'hint' color to magenta and make the 'error' color a dim red.
+    github_dark = {
+      diag = {
+        error = '#660000',
+        hint = 'magenta.base',
+      },
+    },
+    -- Change the "hint" color to the "orange" color, and make the "error" color bright red.
+    all = {
+      diag = {
+        error = '#ff0000',
+        hint = 'orange',
+      },
+    },
+  },
+
+
+})
+cmd[[colorscheme github_dark_dimmed]]
 
 g.tokyonight_style = "storm"
 g.tokyonight_italic_comments = true

@@ -57,11 +57,11 @@ return require('packer').startup(function()
     use "mattn/vim-gist" -- Git Gist
     use "TimUntersberger/neogit" -- Git Client
     use "lewis6991/gitsigns.nvim" -- Git Blame
-    use "airblade/vim-gitgutter" -- Git Gutter
     use "sindrets/diffview.nvim" -- Diff view
     ------------------
     -- UI           --
     ------------------
+    use "projekt0n/github-nvim-theme" -- github them e
     use "lukas-reineke/indent-blankline.nvim" -- Highlight spaces
     use "RRethy/vim-illuminate" -- Highlight Same
     use "folke/tokyonight.nvim" -- Theme Tokio Night
