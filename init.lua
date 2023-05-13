@@ -11,7 +11,7 @@ require('configs.plugins.langs.supported_languages')
 require('configs.plugins.langs.treesitter')
 ----------------Plugins------------------------------------
 require('configs.plugins.search.telescope')
-require('configs.plugins.git.gitsings')
+-- require('configs.plugins.git.gitsings')
 require('configs.plugins.ui.ui')
 -----------------------------------------------------------
 -- Plugins
