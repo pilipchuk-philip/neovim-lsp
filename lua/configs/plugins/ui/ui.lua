@@ -51,14 +51,6 @@ require('github-theme').setup({
 })
 cmd[[colorscheme github_dark_dimmed]]
 
-g.tokyonight_style = "storm"
-g.tokyonight_italic_comments = true
-g.tokyonight_italic_keywords = true
-g.tokyonight_transparent_sidebar = false
-g.tokyonight_dark_sidebar = true
-g.tokyonight_lualine_bold = true
-g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
-
 ---------------------------------------------
 -- Base
 ---------------------------------------------
@@ -163,3 +155,11 @@ require("wilder").set_option('renderer', require("wilder").popupmenu_renderer(
     })
 ))
 
+----------------------------------------------------
+-- Diagnostic (TODO message rewrite)
+----------------------------------------------------
+
+vim.fn.sign_define('DiagnosticSignError', { text='⚠', texthl='DiagnosticSignError'})
+vim.fn.sign_define('DiagnosticSignWarn', { text='?', texthl='DiagnosticSignWarn', linehl='DapBreakpoint', numhl='DapBreakpoint' })
+vim.fn.sign_define('DiagnosticSignHint', { text='H', texthl='DiagnosticSignInfo', linehl='DapBreakpoint', numhl='DapBreakpoint' })
+vim.fn.sign_define('DiagnosticSignInfo', { text='I', texthl='DiagnosticSignHint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
