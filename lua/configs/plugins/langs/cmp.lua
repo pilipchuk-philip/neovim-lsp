@@ -5,6 +5,7 @@ local fn = vim.fn
 local luasnip = require('luasnip')
 local cmp = require('cmp')
 local lspkind = require('lspkind')
+
 local function get_snippets_rtp()
   return vim.tbl_map(function(itm)
     return fn.fnamemodify(itm, ":h")
@@ -12,6 +13,7 @@ local function get_snippets_rtp()
       "package.json", true
   ))
 end
+
 local opts = {
   paths = {
     fn.stdpath('config')..'/snips/',

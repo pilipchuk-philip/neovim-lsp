@@ -22,6 +22,7 @@ return require('packer').startup(function()
     ------------------
     -- CODE         --
     ------------------
+    use "jose-elias-alvarez/null-ls.nvim"
     use {
         "nvim-treesitter/nvim-treesitter", -- Code Highlight
         run = ":TSUpdate"

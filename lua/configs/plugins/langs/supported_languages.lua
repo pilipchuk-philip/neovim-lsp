@@ -132,8 +132,20 @@ require'lspconfig'.sqlls.setup{
 require'lspconfig'.pyright.setup{
     capabilities = capabilities,
     on_attach = function(client, bufnr)
+        -- client.handlers["textDocument/publishDiagnostics"] = function(...) end
         navic.attach(client, bufnr)
     end
+}
+require('lspconfig').ruff_lsp.setup {
+  on_attach = on_attach,
+}
+--[[ local on_attach = function(client, bufnr)
+  -- Disable hover in favor of Pyright
+  client.server_capabilities.hoverProvider = false
+end ]]
+
+require('lspconfig').ruff_lsp.setup {
+  on_attach = on_attach,
 }
 --------------------------------------
 -- Navic
