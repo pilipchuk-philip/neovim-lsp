@@ -158,3 +158,8 @@ vim.fn.sign_define('DiagnosticSignHint',
   { text = 'H', texthl = 'DiagnosticSignInfo', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
 vim.fn.sign_define('DiagnosticSignInfo',
   { text = 'I', texthl = 'DiagnosticSignHint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+
+-----------------------------------------------------
+-- Autoclose
+-----------------------------------------------------
+require("autoclose").setup()
