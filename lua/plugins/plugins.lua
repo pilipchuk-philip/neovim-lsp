@@ -7,8 +7,8 @@ return require('packer').startup(function()
   ------------------
   use "tpope/vim-surround"                          -- Surround
   use "tpope/vim-repeat"                            -- can repeat . vimsurround
-  -- use "cohama/lexima.vim"                           -- Close closures [Update]
-  use 'm4xshen/autoclose.nvim'                      -- Autoclose
+  use "m4xshen/autoclose.nvim"                      -- Autoclose
+  use "snelling-a/better-folds.nvim"                -- Folds
   use "b3nj5m1n/kommentary"                         -- Comments
   use "powerman/vim-plugin-ruscmd"                  -- Russian comand line expired
   use "MattesGroeger/vim-bookmarks"                 -- Bookmarks

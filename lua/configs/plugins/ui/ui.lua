@@ -163,3 +163,7 @@ vim.fn.sign_define('DiagnosticSignInfo',
 -- Autoclose
 -----------------------------------------------------
 require("autoclose").setup()
+-----------------------------------------------------
+-- Better folds
+-----------------------------------------------------
+require("better-folds").setup()
