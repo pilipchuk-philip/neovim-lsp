@@ -95,10 +95,33 @@ require("illuminate").configure({
   large_file_overrides = nil,
   min_count_to_highlight = 1,
 })
-require("lualine").setup {
+--[[ require("lualine").setup {
   extensions = { 'quickfix', 'symbols-outline' }
-}
+} ]]
 
+require("lualine").setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+  },
+  -- icons_enabled = true,
+  sections = {
+    lualine_a = { { 'mode', icons_enabled = true } },
+    lualine_b = { 'diagnostics', { 'branch', icons_enabled = true } },
+    lualine_c = { { 'filename', file_status = true, path = 1, } },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = { 'diff' },
+    lualine_c = { 'filename' },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+}
 
 require("lspconfig").clangd.setup {
   on_attach = on_attach
@@ -140,16 +163,16 @@ require("wilder").set_option('renderer', require("wilder").popupmenu_renderer(
 ))
 
 ----------------------------------------------------
--- Diagnostic (TODO message rewrite)
+-- Diagnostic (TODO message rewrite) ﬀ   ✔  
 ----------------------------------------------------
 
-vim.fn.sign_define('DiagnosticSignError', { text = '⚠', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn',
-  { text = '?', texthl = 'DiagnosticSignWarn', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+  { text = '', texthl = 'DiagnosticSignWarn', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
 vim.fn.sign_define('DiagnosticSignHint',
-  { text = 'H', texthl = 'DiagnosticSignInfo', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+  { text = 'ﬀ', texthl = 'DiagnosticSignInfo', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
 vim.fn.sign_define('DiagnosticSignInfo',
-  { text = 'I', texthl = 'DiagnosticSignHint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+  { text = '', texthl = 'DiagnosticSignHint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
 
 -----------------------------------------------------
 -- Autoclose
