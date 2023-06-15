@@ -18,7 +18,6 @@ return require('packer').startup(function()
       "nvim-telescope/telescope-media-files.nvim"
     }
   }
-  use { "kkoomen/vim-doge", run = ":call doge#install()" } -- Generate doc
   ------------------
   -- CODE         --
   ------------------
@@ -76,9 +75,9 @@ return require('packer').startup(function()
     requires = { "kyazdani42/nvim-web-devicons", },
   }
   use { "romgrk/barbar.nvim", wants = 'nvim-web-devicons' } -- Tabs Barline
-  use "xiyaowong/nvim-transparent"                          --Transporency
+  -- use "xiyaowong/nvim-transparent"                          --Transporency
   use {
-    "SmiteshP/nvim-navic",                                  -- Navic [ Code Breadcrambs ]
+    "SmiteshP/nvim-navic", -- Navic [ Code Breadcrambs ]
     requires = "neovim/nvim-lspconfig"
   }
   use {

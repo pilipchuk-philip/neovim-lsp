@@ -16,10 +16,9 @@ opt.termguicolors = true --  24-bit RGB colors
 ---------------------------------------------
 -- Theme
 ---------------------------------------------
--- cmd[[colorscheme tokyonight-moon]]
 require('github-theme').setup({
   options = {
-    transparent = true,
+    transparent = false,
     hide_end_of_buffer = true,
     hide_nc_statusline = true,
     styles = {
@@ -116,7 +115,7 @@ require("lspconfig").clangd.setup {
 ----------------------------------------------------
 -- Tansporecy
 ----------------------------------------------------
-require("transparent").setup({
+--[[ require("transparent").setup({
   groups = { -- table: default groups
     'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
@@ -125,7 +124,7 @@ require("transparent").setup({
   },
   extra_groups = {},   -- table: additional groups that should be cleared
   exclude_groups = {}, -- table: groups you don't want to clear
-})
+}) ]]
 ----------------------------------------------------
 -- Wilder
 ----------------------------------------------------
