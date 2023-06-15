@@ -5,7 +5,7 @@ return require('packer').startup(function()
   ------------------
   -- Core Plugins --
   ------------------
-  use "tpope/vim-surround"                          -- Surround
+  use "kylechui/nvim-surround"                      -- Surround
   use "tpope/vim-repeat"                            -- can repeat . vimsurround
   use "m4xshen/autoclose.nvim"                      -- Autoclose
   use "snelling-a/better-folds.nvim"                -- Folds
@@ -76,27 +76,11 @@ return require('packer').startup(function()
     requires = { "kyazdani42/nvim-web-devicons", },
   }
   use { "romgrk/barbar.nvim", wants = 'nvim-web-devicons' } -- Tabs Barline
-  -- use "xiyaowong/nvim-transparent"                          --Transporency
-  use {
-    "SmiteshP/nvim-navic", -- Navic [ Code Breadcrambs ]
-    requires = "neovim/nvim-lspconfig"
-  }
-  use {
-    "utilyre/barbecue.nvim", -- Navic [ Code Breadcrambs ]
-    requires = {
-      "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    after = "nvim-web-devicons",
-    config = function()
-      require("barbecue").setup()
-    end,
-  }
   use {
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
   }
+  use "Bekaboo/dropbar.nvim"
   ------------------
   -- Dependency   --
   ------------------
