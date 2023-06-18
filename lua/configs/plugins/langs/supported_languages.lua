@@ -26,6 +26,14 @@ require 'lspconfig'.dockerls.setup {
   capabilities = capabilities,
 }
 --------------------------------------
+-- clang
+--------------------------------------
+require 'lspconfig'.clangd.setup {
+  capabilities = capabilities,
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+  single_file_support = true,
+}
+--------------------------------------
 -- yaml
 --------------------------------------
 require('lspconfig').yamlls.setup {

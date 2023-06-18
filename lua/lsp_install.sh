@@ -44,3 +44,12 @@ https://github.com/rust-analyzer/rust-analyzer
 ${ENDCOLOR}"
 echo -e "${GREEN}-------------------------------------------${ENDCOLOR}"
 
+echo -e "${GREEN}-------------------------------------------${ENDCOLOR}"
+echo -e "${GREEN}                 CLANG                      ${ENDCOLOR}"
+echo -e "${GREEN}-------------------------------------------${ENDCOLOR}"
+echo -e "${RED}       C Lang NEED BE INSTALLED MANUALY      ${ENDCOLOR}"
+echo -e "${RED}
+https://clangd.llvm.org/installation.html
+${ENDCOLOR}"
+echo -e "${GREEN}-------------------------------------------${ENDCOLOR}"
+
