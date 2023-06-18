@@ -12,7 +12,7 @@ require('configs.plugins.langs.treesitter')
 require('configs.plugins.git.gitsigns')
 require('configs.plugins.langs.nulls')
 
-----------------UI Plugins---------------------------------
+----------------UI Plugins----------------------------------
 require('configs.plugins.search.telescope')
 require('configs.plugins.ui.ui')
 require('configs.plugins.ui.trouble')

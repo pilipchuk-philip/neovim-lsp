@@ -101,7 +101,7 @@ require 'lspconfig'.sqlls.setup {
 
 }
 --------------------------------------
--- Pyright
+-- Python
 --------------------------------------
 require 'lspconfig'.pyright.setup {
   capabilities = capabilities,

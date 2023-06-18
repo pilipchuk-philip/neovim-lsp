@@ -1,5 +1,5 @@
 require('luasnip.loaders.from_vscode').lazy_load()
-require('luasnip').filetype_extend("python", {'pytorch'})
+require('luasnip').filetype_extend("python", { 'pytorch' })
 
 local fn = vim.fn
 local luasnip = require('luasnip')
@@ -10,13 +10,13 @@ local function get_snippets_rtp()
   return vim.tbl_map(function(itm)
     return fn.fnamemodify(itm, ":h")
   end, vim.api.nvim_get_runtime_file(
-      "package.json", true
+    "package.json", true
   ))
 end
 
 local opts = {
   paths = {
-    fn.stdpath('config')..'/snips/',
+    fn.stdpath('config') .. '/snips/',
     get_snippets_rtp()[1],
   },
 }
@@ -24,6 +24,17 @@ local opts = {
 require('luasnip.loaders.from_vscode').lazy_load(opts)
 
 cmp.setup({
+  window = {
+    completion = { -- rounded border; thin-style scrollbar
+      border = 'rounded',
+      scrollbar = '║',
+    },
+    documentation = { -- no border; native-style scrollbar
+      border = 'rounded',
+      scrollbar = '║',
+      -- other options
+    },
+  },
   preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
@@ -36,15 +47,15 @@ cmp.setup({
       mode = 'symbol',
       maxwidth = 50,
       ellipsis_char = '...',
-      before = function (entry, vim_item)
+      before = function(entry, vim_item)
         return vim_item
       end
     })
   },
   mapping = {
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
+    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
     ['<C-c>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
@@ -72,11 +83,11 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
   },
   sources = {
-    {name = 'nvim_lsp'},
-    {name = 'luasnip'},
-    {name = 'nvim_lua'},
-    {name = 'path'},
-    {name = 'buffer'},
-    {name = 'spell'},
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'buffer' },
+    { name = 'spell' },
   },
 })

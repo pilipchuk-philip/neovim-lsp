@@ -67,7 +67,9 @@ vim.cmd [[let g:netrw_bufsettings = 'nohidden noma nomod nonu nowrap ro bufliste
 
 require("fidget").setup {}
 
-require("lsp_signature").setup {}
+require("lsp_signature").setup {
+  hint_prefix = "",
+}
 
 require("indent_blankline").setup {
   show_current_context = true,
@@ -128,19 +130,6 @@ require("lspconfig").clangd.setup {
 }
 
 ----------------------------------------------------
--- Tansporecy
-----------------------------------------------------
---[[ require("transparent").setup({
-  groups = { -- table: default groups
-    'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-    'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-    'SignColumn', 'CursorLineNr', 'EndOfBuffer',
-  },
-  extra_groups = {},   -- table: additional groups that should be cleared
-  exclude_groups = {}, -- table: groups you don't want to clear
-}) ]]
-----------------------------------------------------
 -- Wilder
 ----------------------------------------------------
 
@@ -149,17 +138,15 @@ require("wilder").setup({
   next_key = '<TAB>',
 })
 require("wilder").set_option('renderer', require("wilder").popupmenu_renderer(
-  require("wilder").popupmenu_border_theme({
-    left = { ' ', require("wilder").popupmenu_devicons() },
-    highlighter = require("wilder").basic_highlighter(),
-    min_width = '100%',
-    min_height = '20%',
-    max_height = '10%',
-    highlights = {
-      border = 'Normal', -- highlight to use for the border
-    },
+  require("wilder").popupmenu_palette_theme({
+    -- 'single', 'double', 'rounded' or 'solid'
     border = 'rounded',
+    max_height = '75%',      -- max height of the palette
+    min_height = 0,          -- set to the same as 'max_height' for a fixed height window
+    prompt_position = 'top', -- 'top' or 'bottom' to set the location of the prompt
+    reverse = 0,             -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
   })
+
 ))
 
 ----------------------------------------------------
@@ -178,6 +165,7 @@ vim.fn.sign_define('DiagnosticSignInfo',
 -- Autoclose
 -----------------------------------------------------
 require("autoclose").setup()
+
 -----------------------------------------------------
 -- Better folds
 -----------------------------------------------------
