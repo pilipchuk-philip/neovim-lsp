@@ -53,17 +53,22 @@ return require('packer').startup(function()
   ------------------
   -- GIT          --
   ------------------
-  use "mattn/webapi-vim"        -- Git Gist
-  use "mattn/vim-gist"          -- Git Gist
-  use "TimUntersberger/neogit"  -- Git Client
-  use "lewis6991/gitsigns.nvim" -- Git Blame
-  use "sindrets/diffview.nvim"  -- Diff view
+  use "mattn/webapi-vim"                       -- Git Gist
+  use "mattn/vim-gist"                         -- Git Gist
+  use "TimUntersberger/neogit"                 -- Git Client
+  use "lewis6991/gitsigns.nvim"                -- Git Blame
+  use "sindrets/diffview.nvim"                 -- Diff view
+  use "aaronhallaert/advanced-git-search.nvim" -- Git Search on branches/commits
+  use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
+    require('git-conflict').setup()
+  end }
+
   ------------------
   -- UI           --
   ------------------
   use { "j-hui/fidget.nvim", tag = "legacy" }        -- Status for loading plugins
-  use "projekt0n/github-nvim-theme"                  -- github theme
-  -- use "folke/tokyonight.nvim" -- Theme Tokio Night
+  -- use "projekt0n/github-nvim-theme"                  -- github theme
+  use "folke/tokyonight.nvim"                        -- Theme Tokio Night
   use "lukas-reineke/indent-blankline.nvim"          -- Highlight spaces
   use "RRethy/vim-illuminate"                        -- Highlight Same
   use "nvim-lua/plenary.nvim"                        -- Telescope part

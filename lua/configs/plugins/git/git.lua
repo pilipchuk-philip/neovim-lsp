@@ -1,3 +1,20 @@
+require("telescope").setup {
+  -- move this to the place where you call the telescope setup function
+  extensions = {
+    advanced_git_search = {
+      -- Fugitive or diffview
+      diff_plugin = "diffview",
+      -- Customize git in previewer
+      -- e.g. flags such as { "--no-pager" }, or { "-c", "delta.side-by-side=false" }
+      git_flags = {},
+      -- Customize git diff in previewer
+      -- e.g. flags such as { "--raw" }
+      git_diff_flags = {},
+      -- Show builtin git pickers when executing "show_custom_functions" or :AdvancedGitSearch
+      show_builtin_git_pickers = false,
+    }
+  } }
+require("telescope").load_extension("advanced_git_search")
 require('gitsigns').setup {
   signs                        = {
     add          = { text = '│' },
@@ -40,3 +57,15 @@ require('gitsigns').setup {
     enable = false
   },
 }
+
+-- TODO FIX THIS
+--[[ vim.api.nvim_create_autocommand('User', {
+  pattern = 'GitConflictDetected',
+  callback = function()
+    vim.notify('Conflict detected in ' .. vim.fn.expand('<afile>'))
+    vim.keymap.set('n', 'cww', function()
+      engage.conflict_buster()
+      create_buffer_local_mappings()
+    end)
+  end
+}) ]]

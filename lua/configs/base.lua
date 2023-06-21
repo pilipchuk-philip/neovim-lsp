@@ -19,7 +19,7 @@ vim.opt.list       = false -- спец символы
 
 vim.opt.showcmd    = true
 vim.opt.lazyredraw = true
-vim.opt.copyindent = true
+vim.opt.copyindent = false
 
 vim.cmd([[
     filetype indent plugin on
@@ -57,7 +57,7 @@ vim.g.mouse = "a"
 vim.g.autoread = true
 vim.opt.fileformats = "unix,dos,mac"
 vim.opt.inccommand =
-"split"                      -- shows the effects of :substitute, :smagic, :snomagic and user commands with the :command-preview flag as you
+"split" -- shows the effects of :substitute, :smagic, :snomagic and user commands with the :command-preview flag as you
 
 -- -------------------------------------------
 -- Tabs for Filetypes
