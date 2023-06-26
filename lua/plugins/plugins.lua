@@ -53,15 +53,17 @@ return require('packer').startup(function()
   ------------------
   -- GIT          --
   ------------------
-  use "mattn/webapi-vim"                       -- Git Gist
-  use "mattn/vim-gist"                         -- Git Gist
-  use "TimUntersberger/neogit"                 -- Git Client
+  use "mattn/webapi-vim" -- Git Gist
+  use "mattn/vim-gist"   -- Git Gist
+  use {
+    'TimUntersberger/neogit',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim'
+    }
+  }
   use "lewis6991/gitsigns.nvim"                -- Git Blame
-  use "sindrets/diffview.nvim"                 -- Diff view
   use "aaronhallaert/advanced-git-search.nvim" -- Git Search on branches/commits
-  use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
-    require('git-conflict').setup()
-  end }
 
   ------------------
   -- UI           --
