@@ -1,22 +1,19 @@
------------------------------------------------------------
 -- Plugins
------------------------------------------------------------
+----------------Plugins -----------------------------------
 require('plugins.plugins')
------------------------------------------------------------
--- Configs
------------------------------------------------------------
+----------------Configs------------------------------------
 require('configs.base')
 ----------------Keymaps------------------------------------
 require('configs.keymaps.base')
 require('configs.keymaps.plugins')
-----------------Langs Plugins------------------------------
-require('configs.plugins.langs.cmp')
-require('configs.plugins.langs.supported_languages')
-require('configs.plugins.langs.treesitter')
+----------------Develop Plugins----------------------------
+require('configs.plugins.develop.cmp')
+require('configs.plugins.develop.supported_languages')
+require('configs.plugins.develop.treesitter')
+require('configs.plugins.develop.nulls')
+----------------Git Plugins--------------------------------
 require('configs.plugins.git.git')
-require('configs.plugins.langs.nulls')
-
-----------------UI Plugins----------------------------------
+----------------Search Plugins-----------------------------
 require('configs.plugins.search.telescope')
+----------------UI Plugins---------------------------------
 require('configs.plugins.ui.ui')
-require('configs.plugins.ui.trouble')

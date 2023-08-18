@@ -57,7 +57,7 @@ require('gitsigns').setup {
     enable = false
   },
 }
-
+require("neogit").setup()
 require("neogit").setup {
   disable_signs = false,
   disable_hint = false,

@@ -1,100 +1,36 @@
 -- -------------------------------------------
 -- Variables
 -- -------------------------------------------
-local cmd = vim.cmd            -- execute Vim commands
-local exec = vim.api.nvim_exec -- execute Vimscript
-local g = vim.g                -- global variables
-local opt = vim.opt            -- global/buffer/windows-scoped options
-
----------------------------------------------
--- Base
----------------------------------------------
-opt.cursorline = true    -- Подсветка строки с курсором
-opt.number = true        -- Включаем нумерацию строк
-opt.termguicolors = true --  24-bit RGB colors
-
----------------------------------------------
--- Theme
----------------------------------------------
---[[ require('github-theme').setup({
-  options = {
-    transparent = false,
-    hide_end_of_buffer = true,
-    hide_nc_statusline = true,
-    styles = {
-      comments = 'italic,bold',
-      functions = 'bold',
-      keywords = 'bold',
-      variables = 'NONE',
-    },
-    darken = {
-      floats = true,
-      sidebars = {
-        enable = true,
-        list = {},
-      },
-    },
-  },
-
-  specs = {
-    -- Change the color of only the 'github_dark' theme's 'hint' color to magenta and make the 'error' color a dim red.
-    github_dark = {
-      diag = {
-        error = '#660000',
-        hint = 'magenta.base',
-      },
-    },
-    -- Change the "hint" color to the "orange" color, and make the "error" color bright red.
-    all = {
-      diag = {
-        error = '#ff0000',
-        hint = 'orange',
-      },
-    },
-  },
-
-
-}) ]]
--- cmd [[colorscheme github_dark_dimmed]]
-cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight]]
 require("tokyonight").setup({
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
   style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   light_style = "day",    -- The theme is used when the background is set to light
   transparent = false,    -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
   styles = {
-    -- Style to be applied to different syntax groups
-    -- Value is any valid attr-list value for `:help nvim_set_hl`
     comments = { italic = true },
     keywords = { italic = true },
     functions = {},
     variables = {},
-    -- Background styles. Can be "dark", "transparent" or "normal"
-    sidebars = "dark",             -- style for sidebars, see below
+    sidebars = "dark",             -- style for sidebars. Background styles. Can be "dark", "transparent" or "normal"
     floats = "dark",               -- style for floating windows
   },
   sidebars = { "qf", "help" },     -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
   day_brightness = 0.3,            -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
   hide_inactive_statusline = true, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
   dim_inactive = false,            -- dims inactive windows
-  lualine_bold = false,            -- When `true`, section headers in the lualine theme will be bold
+  lualine_bold = true,             -- When `true`, section headers in the lualine theme will be bold
 
 })
-cmd [[ set wildignore+=*__pycache__,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.* ]]
 ---------------------------------------------
 -- Plugins
 ---------------------------------------------
-cmd [[ let NERDTreeRespectWildIgnore=1 ]]
-
-vim.cmd [[set hidden]]
-vim.cmd [[let g:netrw_bufsettings = 'nohidden noma nomod nonu nowrap ro buflisted']]
+vim.cmd [[ let NERDTreeRespectWildIgnore=1 ]]
 
 require("fidget").setup {}
 
 require("lsp_signature").setup {
-  hint_prefix = "",
+  hint_prefix = "", -- Fix disable pictogram
 }
 
 require("indent_blankline").setup {
@@ -123,16 +59,12 @@ require("illuminate").configure({
   large_file_overrides = nil,
   min_count_to_highlight = 1,
 })
---[[ require("lualine").setup {
-  extensions = { 'quickfix', 'symbols-outline' }
-} ]]
 
 require("lualine").setup {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     theme = 'auto',
   },
-  -- icons_enabled = true,
   sections = {
     lualine_a = { { 'mode', icons_enabled = true } },
     lualine_b = { 'diagnostics', { 'branch', icons_enabled = true } },
@@ -155,17 +87,13 @@ require("lspconfig").clangd.setup {
   on_attach = on_attach
 }
 
-----------------------------------------------------
--- Wilder
-----------------------------------------------------
-
 require("wilder").setup({
   modes = { ':', '/', '?' },
   next_key = '<TAB>',
 })
+
 require("wilder").set_option('renderer', require("wilder").popupmenu_renderer(
   require("wilder").popupmenu_palette_theme({
-    -- 'single', 'double', 'rounded' or 'solid'
     border = 'rounded',
     max_height = '75%',      -- max height of the palette
     min_height = 0,          -- set to the same as 'max_height' for a fixed height window
@@ -175,24 +103,78 @@ require("wilder").set_option('renderer', require("wilder").popupmenu_renderer(
 
 ))
 
-----------------------------------------------------
--- Diagnostic (TODO message rewrite) ﬀ   ✔  
-----------------------------------------------------
+require("autoclose").setup()
 
-vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
+require("better-folds").setup()
+
+----------------------------------------------------
+-- Diagnostic (TODO message rewrite)  ✔   
+----------------------------------------------------
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn',
   { text = '', texthl = 'DiagnosticSignWarn', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
 vim.fn.sign_define('DiagnosticSignHint',
-  { text = 'ﬀ', texthl = 'DiagnosticSignInfo', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+  { text = '', texthl = 'DiagnosticSignInfo', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
 vim.fn.sign_define('DiagnosticSignInfo',
   { text = '', texthl = 'DiagnosticSignHint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
 
------------------------------------------------------
--- Autoclose
------------------------------------------------------
-require("autoclose").setup()
+require("trouble").setup {
+  position = "bottom",               -- position of the list can be: bottom, top, left, right
+  height = 10,                       -- height of the trouble list when position is top or bottom
+  width = 50,                        -- width of the list when position is left or right
+  icons = true,                      -- use devicons for filenames
+  mode = "document_diagnostics",     -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+  fold_open = "",                 -- icon used for open folds
+  fold_closed = "",               -- icon used for closed folds
+  group = true,                      -- group results by file
+  padding = true,                    -- add an extra new line on top of the list
+  action_keys = {
+    close = "q",                     -- close the list
+    cancel = "<esc>",                -- cancel the preview and get back to your last window / buffer / cursor
+    refresh = "r",                   -- manually refresh
+    jump = { "<cr>", "<tab>" },      -- jump to the diagnostic or open / close folds
+    open_split = { "<c-x>" },        -- open buffer in new split
+    open_vsplit = { "<c-v>" },       -- open buffer in new vsplit
+    open_tab = { "<c-t>" },          -- open buffer in new tab
+    jump_close = { "o" },            -- jump to the diagnostic and close the list
+    toggle_mode = "m",               -- toggle between "workspace" and "document" diagnostics mode
+    toggle_preview = "P",            -- toggle auto_preview
+    hover = "K",                     -- opens a small popup with the full multiline message
+    preview = "p",                   -- preview the diagnostic location
+    close_folds = { "zM", "zm" },    -- close all folds
+    open_folds = { "zR", "zr" },     -- open all folds
+    toggle_fold = { "zA", "za" },    -- toggle fold of current file
+    previous = "k",                  -- previous item
+    next = "j"                       -- next item
+  },
+  indent_lines = true,               -- add an indent guide below the fold icons
+  auto_open = false,                 -- automatically open the list when you have diagnostics
+  auto_close = false,                -- automatically close the list when you have no diagnostics
+  auto_preview = true,               -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+  auto_fold = false,                 -- automatically fold a file trouble list at creation
+  auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
+  signs = {
+    error = "",
+    warning = "",
+    hint = "",
+    information = "",
+    other = "﫠"
+  },
+  use_diagnostic_signs = false
+}
 
------------------------------------------------------
--- Better folds
------------------------------------------------------
-require("better-folds").setup()
+require("barbar").setup {
+  focus_on_close = 'left',
+  maximum_padding = 1,
+  minimum_padding = 1,
+  maximum_length = 30,
+  minimum_length = 15,
+  semantic_letters = true,
+  sidebar_filetypes = {
+    NvimTree = true,
+    undotree = { text = 'undotree' },
+    ['neo-tree'] = { event = 'BufWipeout' },
+    Outline = { event = 'BufWinLeave', text = 'symbols-outline' },
+  },
+  no_name_title = nil,
+}

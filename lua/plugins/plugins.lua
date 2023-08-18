@@ -36,16 +36,10 @@ return require('packer').startup(function()
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
       "onsails/diaglist.nvim",
       "onsails/lspkind-nvim",
     },
   })
-  use {
-    "L3MON4D3/LuaSnip", -- Snippets
-    config = function() require('plugins.snippets.snippets') end
-  }
-  use "rafamadriz/friendly-snippets"    -- Snippets
   use "ray-x/lsp_signature.nvim"        -- Show function signature
   use "neovim/nvim-lspconfig"           -- Lsp config files
   use "williamboman/nvim-lsp-installer" -- Lsp installer
@@ -58,9 +52,11 @@ return require('packer').startup(function()
   use {
     'TimUntersberger/neogit',
     requires = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim'
-    }
+      "nvim-lua/plenary.nvim",         -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim",        -- optional
+    },
+    config = true
   }
   use "lewis6991/gitsigns.nvim"                -- Git Blame
   use "aaronhallaert/advanced-git-search.nvim" -- Git Search on branches/commits
