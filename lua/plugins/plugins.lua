@@ -64,8 +64,9 @@ return require('packer').startup(function()
   ------------------
   -- UI           --
   ------------------
-  use { "j-hui/fidget.nvim", tag = "legacy" }        -- Status for loading plugins
+  use { "j-hui/fidget.nvim", tag = "legacy" } -- Status for loading plugins
   -- use "projekt0n/github-nvim-theme"                  -- github theme
+  use 'navarasu/onedark.nvim'
   use "folke/tokyonight.nvim"                        -- Theme Tokio Night
   use "lukas-reineke/indent-blankline.nvim"          -- Highlight spaces
   use "RRethy/vim-illuminate"                        -- Highlight Same

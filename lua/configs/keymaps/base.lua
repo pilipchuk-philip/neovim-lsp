@@ -41,3 +41,5 @@ vim.keymap.set('n', 'sh', '<C-w>h', { silent = true })
 vim.keymap.set('n', 'sl', '<C-w>l', { silent = true })
 vim.keymap.set('n', 'sk', '<C-w>k', { silent = true })
 vim.keymap.set('n', 'sj', '<C-w>j', { silent = true })
+
+-- delete me
