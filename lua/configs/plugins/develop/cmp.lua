@@ -1,4 +1,3 @@
-
 local fn = vim.fn
 local cmp = require('cmp')
 local lspkind = require('lspkind')
@@ -20,7 +19,7 @@ cmp.setup({
   -- lspkind (icons for cmp)
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol',
+      mode = 'symbol_text',
       maxwidth = 50,
       ellipsis_char = '...',
       before = function(entry, vim_item)
