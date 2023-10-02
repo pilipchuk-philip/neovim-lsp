@@ -67,4 +67,5 @@ cmd [[ nnoremap <C-p> :Telescope find_files<CR> ]]
 cmd [[ nnoremap <C-f> :Telescope live_grep<CR> ]]
 cmd [[ nnoremap <C-e> :Telescope buffers<CR> ]]
 cmd [[ nnoremap <C-g> :Telescope git_status<CR> ]]
+cmd [[ nnoremap <C-y> :Telescope lsp_document_symbols ignore_symbols=variable<CR> ]]
 cmd [[ nnoremap <silent>gr :lua require('telescope.builtin').lsp_references()<CR> ]] -- Find References
