@@ -79,7 +79,6 @@ return require('packer').startup(function()
     "gelguy/wilder.nvim",                            -- Wilder
     requires = { "kyazdani42/nvim-web-devicons", },
   }
-  use { "romgrk/barbar.nvim", wants = 'nvim-web-devicons' } -- Tabs Barline
   use {
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
