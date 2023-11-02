@@ -66,8 +66,9 @@ return require('packer').startup(function()
   ------------------
   use { "j-hui/fidget.nvim", tag = "legacy" } -- Status for loading plugins
   -- use "projekt0n/github-nvim-theme"                  -- github theme
-  use 'navarasu/onedark.nvim'
-  use "folke/tokyonight.nvim"                        -- Theme Tokio Night
+  -- use 'navarasu/onedark.nvim'
+  -- use "folke/tokyonight.nvim"                        -- Theme Tokio Night
+  use { "bluz71/vim-nightfly-colors" }
   use "lukas-reineke/indent-blankline.nvim"          -- Highlight spaces
   use "RRethy/vim-illuminate"                        -- Highlight Same
   use "nvim-lua/plenary.nvim"                        -- Telescope part
