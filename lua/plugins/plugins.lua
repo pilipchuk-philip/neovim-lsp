@@ -5,20 +5,20 @@ return require('packer').startup(function()
   ------------------
   -- Core Plugins --
   ------------------
-  use "kylechui/nvim-surround"                      -- Surround
-  use "tpope/vim-repeat"                            -- can repeat . vimsurround
-  use "m4xshen/autoclose.nvim"                      -- Autoclose
-  use "snelling-a/better-folds.nvim"                -- Folds
-  use "b3nj5m1n/kommentary"                         -- Comments
-  use "powerman/vim-plugin-ruscmd"                  -- Russian comand line expired
-  use "MattesGroeger/vim-bookmarks"                 -- Bookmarks
-  use {
+  use "kylechui/nvim-surround"       -- Surround
+  use "tpope/vim-repeat"             -- can repeat . vimsurround
+  use "m4xshen/autoclose.nvim"       -- Autoclose
+  use "snelling-a/better-folds.nvim" -- Folds
+  use "b3nj5m1n/kommentary"          -- Comments
+  use "powerman/vim-plugin-ruscmd"   -- Russian comand line expired
+  use "MattesGroeger/vim-bookmarks"  -- Bookmarks
+  --[[ use {
     "nvim-telescope/telescope.nvim", tag = '0.1.0', -- Search
     requires = {
       "nvim-lua/popup.nvim",
       "nvim-telescope/telescope-media-files.nvim"
     }
-  }
+  } ]]
   ------------------
   -- CODE         --
   ------------------
@@ -65,10 +65,8 @@ return require('packer').startup(function()
   -- UI           --
   ------------------
   use { "j-hui/fidget.nvim", tag = "legacy" } -- Status for loading plugins
-  -- use "projekt0n/github-nvim-theme"                  -- github theme
-  -- use 'navarasu/onedark.nvim'
-  -- use "folke/tokyonight.nvim"                        -- Theme Tokio Night
-  use { "bluz71/vim-nightfly-colors" }
+  -- use "ellisonleao/gruvbox.nvim"
+  use "sainnhe/gruvbox-material"
   use "lukas-reineke/indent-blankline.nvim"          -- Highlight spaces
   use "RRethy/vim-illuminate"                        -- Highlight Same
   use "nvim-lua/plenary.nvim"                        -- Telescope part
