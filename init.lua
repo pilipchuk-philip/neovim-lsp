@@ -1,5 +1,5 @@
 -- One possible example:
- -- - https://learnxinyminutes.com/docs/lua/
+-- - https://learnxinyminutes.com/docs/lua/
 --  - https://neovim.io/doc/user/lua-guide.html
 --
 
@@ -22,61 +22,61 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-  { 'kylechui/nvim-surround' }, --
-  { 'm4xshen/autoclose.nvim' }, --
+  { 'xiyaowong/transparent.nvim' },
+  { 'kylechui/nvim-surround' },       --
+  { 'm4xshen/autoclose.nvim' },       --
   { 'snelling-a/better-folds.nvim' }, --
-  { 'b3nj5m1n/kommentary' }, --
-  { 'powerman/vim-plugin-ruscmd' }, --
-  { 'MattesGroeger/vim-bookmarks' }, --
-  { 'jose-elias-alvarez/null-ls.nvim'},
-  { 'ray-x/lsp_signature.nvim'},
-  { 'andymass/vim-matchup'},
+  { 'b3nj5m1n/kommentary' },          --
+  { 'powerman/vim-plugin-ruscmd' },   --
+  { 'MattesGroeger/vim-bookmarks' },  --
+  { 'jose-elias-alvarez/null-ls.nvim' },
+  { 'ray-x/lsp_signature.nvim' },
+  { 'andymass/vim-matchup' },
   { 'gelguy/wilder.nvim' },
-  { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
+  { 'tpope/vim-sleuth' },      -- Detect tabstop and shiftwidth automatically
   -- { 'folke/which-key.nvim', opts = {} },
-  { 'RRethy/vim-illuminate' },                        -- Highlight Same
+  { 'RRethy/vim-illuminate' }, -- Highlight Same
   {
-    'hrsh7th/nvim-cmp', -- Autocompletion
-      dependencies = {
-        {'L3MON4D3/LuaSnip'},
-        {'saadparwaiz1/cmp_luasnip'},
-        {'hrsh7th/cmp-buffer'},
-        {'hrsh7th/cmp-cmdline'},
-        {'onsails/lspkind-nvim'},
-        {'hrsh7th/cmp-nvim-lsp'},
-        {'hrsh7th/cmp-path'},
-        {'rafamadriz/friendly-snippets'},
-      },
+    'hrsh7th/nvim-cmp',        -- Autocompletion
+    dependencies = {
+      { 'L3MON4D3/LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'onsails/lspkind-nvim' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-path' },
+      { 'rafamadriz/friendly-snippets' },
+    },
   },
 
   {
     'neovim/nvim-lspconfig', -- LSP Configuration & Plugins
-      dependencies = {
-        { 'williamboman/mason.nvim', config = true },
-        { 'williamboman/mason-lspconfig.nvim'},
-        { 'j-hui/fidget.nvim', opts = {} },
-        { 'folke/neodev.nvim'}, -- lua lang helper
-        { 'ryanoasis/vim-devicons' },       -- Icons
-        { 'kyazdani42/nvim-web-devicons' }, -- Icons
-      },
+    dependencies = {
+      { 'williamboman/mason.nvim',          config = true },
+      { 'williamboman/mason-lspconfig.nvim' },
+      { 'j-hui/fidget.nvim',                opts = {} },
+      { 'folke/neodev.nvim' },            -- lua lang helper
+      { 'ryanoasis/vim-devicons' },       -- Icons
+      { 'kyazdani42/nvim-web-devicons' }, -- Icons
+    },
   },
-  {'lewis6991/gitsigns.nvim',},
+  { 'lewis6991/gitsigns.nvim', },
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'sainnhe/gruvbox-material',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
-  {'nvim-lualine/lualine.nvim',},
+  { 'nvim-lualine/lualine.nvim', },
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {},
   },
-    -- Fuzzy Finder (files, lsp, etc)
+  -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -110,8 +110,8 @@ require('lazy').setup({
                 filetype = { 'neo-tree', "neo-tree-popup", "notify" },
                 buftype = { 'terminal', "quickfix" },
               },
-          },
-        })
+            },
+          })
         end,
       },
     },
@@ -135,3 +135,4 @@ require('custom.configs.cmp')
 require('custom.configs.lsp')
 require('custom.configs.neotree')
 require('custom.configs.ui')
+require('custom.configs.null_ls')
