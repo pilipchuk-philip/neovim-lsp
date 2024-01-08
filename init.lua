@@ -124,6 +124,16 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true
+  },
+
 
 }, {})
 
@@ -136,3 +146,4 @@ require('custom.configs.lsp')
 require('custom.configs.neotree')
 require('custom.configs.ui')
 require('custom.configs.null_ls')
+require('custom.configs.git')

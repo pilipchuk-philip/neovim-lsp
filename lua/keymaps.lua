@@ -1,5 +1,11 @@
 local keymap = vim.keymap.set
 
+if vim.loop.os_uname().sysname == "Darwin" then
+  vim.cmd [[ vmap <C-c> "*y ]]
+else
+  vim.cmd [[ vmap <C-c> "+y ]]
+end
+
 -- See `:help vim.keymap.set()`
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
