@@ -1,7 +1,9 @@
 require("lsp_signature").setup {
   hint_prefix = "", -- Fix disable pictogram
 }
-require("ibl").setup()
+require("ibl").setup {
+  scope = { enabled = false },
+}
 require("illuminate").configure({
   providers = {
     'lsp',
