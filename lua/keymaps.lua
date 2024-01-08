@@ -14,10 +14,9 @@ keymap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diag
 keymap('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 --- NERDTRee
-keymap({'n', 'v'}, '<BS>', ':Neotree toggle<CR>', { silent = true })
+keymap({ 'n', 'v' }, '<BS>', ':Neotree toggle<CR>', { silent = true })
 
 -- Tabs, Splits
-keymap('n', '<C-t>', ':tabedit<Return>', { silent = true })
 keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
 keymap('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
 
@@ -43,10 +42,15 @@ end
 -- Hover Doc
 keymap('n', 'K', vim.lsp.buf.hover)
 
+keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
+keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 -- [Telescope] Search
+keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 keymap('n', '<C-p>', ':Telescope find_files<CR>')
 keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
-keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', {silent = true})
+
+
+keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })

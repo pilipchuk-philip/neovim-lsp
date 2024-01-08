@@ -29,7 +29,7 @@ require('lazy').setup({
   { 'b3nj5m1n/kommentary' },          --
   { 'powerman/vim-plugin-ruscmd' },   --
   { 'MattesGroeger/vim-bookmarks' },  --
-  { 'jose-elias-alvarez/null-ls.nvim' },
+  { 'nvimtools/none-ls.nvim' },
   { 'ray-x/lsp_signature.nvim' },
   { 'andymass/vim-matchup' },
   { 'gelguy/wilder.nvim' },
