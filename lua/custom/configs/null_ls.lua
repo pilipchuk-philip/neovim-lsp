@@ -33,7 +33,6 @@ local sources = {
     filetypes = {
       "python"
     },
-    -- extra_args= {}
   }),
   code_actions.refactoring,
   diagnostics.yamllint,

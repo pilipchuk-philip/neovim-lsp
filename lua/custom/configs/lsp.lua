@@ -41,11 +41,29 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
- -- Signature
+local lspconfig = require 'lspconfig'
+
+-- overwrite pyright default settings
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        autoImportCompletions = false,
+        diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "off",
+      },
+    },
+  },
+})
+
+-- Signature
 require "lsp_signature".setup({
   bind = true,
   handler_opts = {
     border = "rounded"
   }
 })
-

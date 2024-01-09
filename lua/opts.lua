@@ -1,46 +1,46 @@
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch      = false
 
 -- Make line numbers default
-vim.wo.number = true
+vim.wo.number       = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse         = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'
 
-vim.o.breakindent = true -- Enable break indent
-vim.opt.splitright     = true -- vertical split вправо
-vim.opt.splitbelow     = true -- horizontal split вниз
-vim.opt.title          = true
+vim.o.breakindent   = true    -- Enable break indent
+vim.opt.splitright  = true    -- vertical split вправо
+vim.opt.splitbelow  = true    -- horizontal split вниз
+vim.opt.title       = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.o.undofile      = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.o.ignorecase    = true
+vim.o.smartcase     = true
 
-vim.wo.signcolumn = 'yes' -- Keep signcolumn on by default ??
-vim.opt.lazyredraw = true
-vim.opt.showcmd = true
-vim.opt.cursorline = true    -- Подсветка строки с курсором
-vim.opt.wrap = false
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.showmatch = true
-vim.opt.showmode = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
+vim.wo.signcolumn   = 'yes' -- Keep signcolumn on by default ??
+vim.opt.lazyredraw  = true
+vim.opt.showcmd     = true
+vim.opt.cursorline  = true -- Подсветка строки с курсором
+vim.opt.wrap        = false
+vim.opt.ignorecase  = true
+vim.opt.smartcase   = true
+vim.opt.showmatch   = true
+vim.opt.showmode    = true
+vim.opt.hlsearch    = true
+vim.opt.incsearch   = true
 vim.opt.virtualedit = "all" -- Allow virtual editing in all modes
 vim.opt.fileformats = "unix,dos,mac"
 -- Backups
-vim.opt.backup = false   -- do not keep backup files, it's 70's style
-vim.opt.swapfile = false -- do not write annoying intermediate swap
-vim.opt.undofile = true  -- Возможность отката назад
+vim.opt.backup      = false -- do not keep backup files, it's 70's style
+vim.opt.swapfile    = false -- do not write annoying intermediate swap
+vim.opt.undofile    = true -- Возможность отката назад
 vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 vim.opt.shell = 'zsh'
 
@@ -70,11 +70,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Diagnostic Icons
 vim.fn.sign_define("DiagnosticSignError",
-  {text = " ", texthl = "DiagnosticSignError"})
+  { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn",
-  {text = " ", texthl = "DiagnosticSignWarn"})
+  { text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo",
-  {text = " ", texthl = "DiagnosticSignInfo"})
+  { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint",
-  {text = "󰌵", texthl = "DiagnosticSignHint"})
-
+  { text = "󰌵", texthl = "DiagnosticSignHint" })
