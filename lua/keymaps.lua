@@ -45,6 +45,11 @@ else
   keymap('v', '<C-_>', '<Plug>kommentary_visual_default<CR>')
 end
 
+if vim.env.TMUX then
+  keymap('n', '', '<Plug>kommentary_line_default<CR>')
+  keymap('v', '', '<Plug>kommentary_visual_default<CR>')
+end
+
 -- Hover Doc
 keymap('n', 'K', vim.lsp.buf.hover)
 
