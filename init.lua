@@ -27,12 +27,12 @@ require('lazy').setup({
     end,
   },
   { 'xiyaowong/transparent.nvim' },
-  { 'kylechui/nvim-surround' },       --
-  { 'm4xshen/autoclose.nvim' },       --
-  { 'snelling-a/better-folds.nvim' }, --
-  { 'b3nj5m1n/kommentary' },          --
-  { 'powerman/vim-plugin-ruscmd' },   --
-  { 'MattesGroeger/vim-bookmarks' },  --
+  { 'kylechui/nvim-surround' },
+  { 'm4xshen/autoclose.nvim' },
+  { 'snelling-a/better-folds.nvim' },
+  { 'b3nj5m1n/kommentary' },
+  { 'powerman/vim-plugin-ruscmd' },
+  { 'MattesGroeger/vim-bookmarks' },
   { 'nvimtools/none-ls.nvim' },
   { 'ray-x/lsp_signature.nvim' },
   { 'andymass/vim-matchup' },
