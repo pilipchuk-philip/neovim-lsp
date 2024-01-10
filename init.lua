@@ -21,7 +21,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-
   { 'xiyaowong/transparent.nvim' },
   { 'kylechui/nvim-surround' },       --
   { 'm4xshen/autoclose.nvim' },       --
@@ -133,7 +132,7 @@ require('lazy').setup({
     },
     config = true
   },
-
+  { 'akinsho/git-conflict.nvim', version = "*", config = true },
 
 }, {})
 

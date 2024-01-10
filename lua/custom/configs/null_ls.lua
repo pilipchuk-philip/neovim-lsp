@@ -11,13 +11,18 @@ local sources = {
       "html", "json", "yaml", "markdown"
     }
   }),
-  diagnostics.vale,
+  -- javascript
+  code_actions.eslint_d,
   -- markdown
-  diagnostics.markdownlint,
-  formatting.markdownlint,
+  -- make
+  diagnostics.checkmake,
+  -- django/jinja
+  diagnostics.djlint,
+
   -- Shellcheck
   code_actions.shellcheck,
   -- Python
+  formatting.docformatter,
   formatting.isort.with({
     filetypes = {
       "python"
