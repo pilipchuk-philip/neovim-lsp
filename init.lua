@@ -21,6 +21,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  { 'nyoom-engineering/oxocarbon.nvim',
+    config = function()
+      vim.cmd.colorscheme 'oxocarbon'
+    end,
+  },
   { 'xiyaowong/transparent.nvim' },
   { 'kylechui/nvim-surround' },       --
   { 'm4xshen/autoclose.nvim' },       --
@@ -61,13 +66,13 @@ require('lazy').setup({
     },
   },
   { 'lewis6991/gitsigns.nvim', },
-  {
+  --[[ {
     'sainnhe/gruvbox-material',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'gruvbox-material'
     end,
-  },
+  }, ]]
   { 'nvim-lualine/lualine.nvim', },
   {
     -- Add indentation guides even on blank lines
