@@ -80,6 +80,9 @@ require("lualine").setup {
     icons_enabled = true,
     -- theme = 'auto', # if theme is not catppuccin
     theme = "catppuccin",
+    component_separators = { left = ')', right = '(' },
+    -- section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
   },
   sections = {
     lualine_a = { { 'mode', icons_enabled = true } },
