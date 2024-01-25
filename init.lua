@@ -21,10 +21,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { 'nyoom-engineering/oxocarbon.nvim',
+  --[[ { 'nyoom-engineering/oxocarbon.nvim',
     config = function()
       vim.cmd.colorscheme 'oxocarbon'
     end,
+  }, ]]
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
   },
   { 'xiyaowong/transparent.nvim' },
   { 'kylechui/nvim-surround' },
