@@ -33,8 +33,8 @@ require("lualine").setup {
   },
   sections = {
     lualine_a = { { 'mode', icons_enabled = true } },
-    lualine_b = { 'diagnostics', { 'branch', icons_enabled = true } },
-    lualine_c = { { 'filename', file_status = true, path = 1, } },
+    lualine_b = { 'diagnostics', { 'filename', file_status = true, path = 1, } },
+    lualine_c = { { 'branch', icons_enabled = true } },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
