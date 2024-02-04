@@ -21,16 +21,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  --[[ { 'nyoom-engineering/oxocarbon.nvim',
-    config = function()
-      vim.cmd.colorscheme 'oxocarbon'
-    end,
-  }, ]]
   {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
   },
+  { 'davidgranstrom/nvim-markdown-preview' },
   { 'xiyaowong/transparent.nvim' },
   { 'kylechui/nvim-surround' },
   { 'm4xshen/autoclose.nvim' },
