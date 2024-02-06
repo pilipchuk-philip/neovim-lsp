@@ -21,6 +21,7 @@ local sources = {
 
   -- Shellcheck
   code_actions.shellcheck,
+  code_actions.refactoring,
   -- Python
   formatting.docformatter,
   formatting.isort.with({
@@ -39,7 +40,6 @@ local sources = {
       "python"
     },
   }),
-  code_actions.refactoring,
   diagnostics.yamllint,
 }
 

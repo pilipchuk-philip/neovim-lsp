@@ -1,10 +1,31 @@
 local keymap = vim.keymap.set
+local tb = require('telescope.builtin')
+
+keymap('n', ';', ':', { silent = true })
 
 if vim.loop.os_uname().sysname == "Darwin" then
   vim.cmd [[ vmap <C-c> "*y ]]
 else
   vim.cmd [[ vmap <C-c> "+y ]]
 end
+--
+function vim.getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg('v')
+  vim.fn.setreg('v', {})
+
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
+end
+
+keymap('v', '<C-f>', function()
+  local text = vim.getVisualSelection()
+  tb.live_grep({ default_text = text })
+end)
 
 -- See `:help vim.keymap.set()`
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -56,6 +77,7 @@ keymap('n', 'K', vim.lsp.buf.hover)
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 -- [Telescope] Search
+keymap('n', '<C-r>', ':IncRename ')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 keymap('n', '<C-p>', ':Telescope find_files<CR>')
 keymap('n', '<C-f>', ':Telescope live_grep<CR>')

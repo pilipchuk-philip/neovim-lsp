@@ -26,7 +26,24 @@ require('lazy').setup({
     name = "catppuccin",
     priority = 1000,
   },
-
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  },
+  {
+    'aznhe21/actions-preview.nvim',
+    config = function()
+      vim.keymap.set({ 'v', 'n' }, 'gf', require('actions-preview').code_actions)
+    end,
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
   { 'davidgranstrom/nvim-markdown-preview' },
   { 'xiyaowong/transparent.nvim' },
   { 'kylechui/nvim-surround' },
