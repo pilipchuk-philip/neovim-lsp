@@ -26,6 +26,7 @@ require('lazy').setup({
     name = "catppuccin",
     priority = 1000,
   },
+
   { 'davidgranstrom/nvim-markdown-preview' },
   { 'xiyaowong/transparent.nvim' },
   { 'kylechui/nvim-surround' },
@@ -52,6 +53,7 @@ require('lazy').setup({
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-path' },
       { 'rafamadriz/friendly-snippets' },
+      { 'lukas-reineke/cmp-under-comparator' },
     },
   },
 
@@ -61,9 +63,9 @@ require('lazy').setup({
       { 'williamboman/mason.nvim',          config = true },
       { 'williamboman/mason-lspconfig.nvim' },
       { 'j-hui/fidget.nvim',                opts = {} },
-      { 'folke/neodev.nvim' },            -- lua lang helper
-      { 'ryanoasis/vim-devicons' },       -- Icons
-      { 'kyazdani42/nvim-web-devicons' }, -- Icons
+      { 'folke/neodev.nvim' },      -- lua lang helper
+      { 'ryanoasis/vim-devicons' }, -- Icons
+      -- { 'kyazdani42/nvim-web-devicons' }, -- Icons
     },
   },
   { 'lewis6991/gitsigns.nvim', },
