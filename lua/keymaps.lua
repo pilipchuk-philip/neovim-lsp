@@ -89,7 +89,7 @@ keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { si
 keymap('n', '<C-r>', ':IncRename ')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 
-keymap('n', '<C-p>', ':Telescope find_files<CR>')
+keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fd,--type,f,--exclude,.git<CR>')
 keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
