@@ -73,17 +73,24 @@ end
 
 -- Hover Doc
 keymap('n', 'K', vim.lsp.buf.hover)
+vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 
+-- LSP
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
+keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })
+--
+-- Missing LSP
+--
+-- vim.lsp.buf.implementation()|
+-- vim.lsp.buf.code_action()|
+
 -- [Telescope] Search
 keymap('n', '<C-r>', ':IncRename ')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
+
 keymap('n', '<C-p>', ':Telescope find_files<CR>')
 keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
-
-
-keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })

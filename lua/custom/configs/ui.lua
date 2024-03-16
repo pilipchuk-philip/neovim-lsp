@@ -139,3 +139,19 @@ require("transparent").setup({ -- Optional, you don't have to run setup.
 vim.cmd [[
   highlight Visual cterm=NONE ctermbg=Black ctermfg=Black guibg=LightYellow guifg=Black
 ]]
+
+-- Documentation nice bordered floating window
+require("hover").setup {
+  init = function()
+    require("hover.providers.lsp")
+  end,
+  preview_opts = {
+    border = 'single'
+  },
+  preview_window = false,
+  title = true,
+  mouse_providers = {
+    'LSP'
+  },
+  mouse_delay = 1000
+}

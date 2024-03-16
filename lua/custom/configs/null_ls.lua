@@ -11,22 +11,13 @@ local sources = {
       "html", "json", "yaml", "markdown"
     }
   }),
-  -- javascript
-  code_actions.eslint_d,
-  -- markdown
-  -- make
-  diagnostics.checkmake,
-  -- django/jinja
-  diagnostics.djlint,
-
-  -- Shellcheck
-  code_actions.shellcheck,
-  code_actions.refactoring,
-  -- Python
-  formatting.docformatter,
+  -- Code actions
   formatting.isort.with({
     filetypes = {
       "python"
+    },
+    extra_args = {
+      "--force-single-line-imports",
     },
   }),
   formatting.black.with({
@@ -34,13 +25,6 @@ local sources = {
       "python"
     },
   }),
-  diagnostics.ruff.with({
-    command = { "python", "-m", "ruff" },
-    filetypes = {
-      "python"
-    },
-  }),
-  diagnostics.yamllint,
 }
 
 null_ls.setup({ sources = sources })

@@ -44,6 +44,9 @@ require('lazy').setup({
       require("refactoring").setup()
     end,
   },
+  {
+    "lewis6991/hover.nvim",
+  },
   { 'davidgranstrom/nvim-markdown-preview' },
   { 'xiyaowong/transparent.nvim' },
   { 'kylechui/nvim-surround' },
@@ -57,7 +60,6 @@ require('lazy').setup({
   { 'andymass/vim-matchup' },
   { 'gelguy/wilder.nvim' },
   { 'tpope/vim-sleuth' },      -- Detect tabstop and shiftwidth automatically
-  -- { 'folke/which-key.nvim', opts = {} },
   { 'RRethy/vim-illuminate' }, -- Highlight Same
   {
     'hrsh7th/nvim-cmp',        -- Autocompletion
@@ -86,13 +88,6 @@ require('lazy').setup({
     },
   },
   { 'lewis6991/gitsigns.nvim', },
-  --[[ {
-    'sainnhe/gruvbox-material',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'gruvbox-material'
-    end,
-  }, ]]
   { 'nvim-lualine/lualine.nvim', },
   {
     -- Add indentation guides even on blank lines
@@ -185,5 +180,5 @@ require('custom.configs.cmp')
 require('custom.configs.lsp')
 require('custom.configs.neotree')
 require('custom.configs.ui')
--- require('custom.configs.null_ls')
+require('custom.configs.null_ls')
 require('custom.configs.git')
