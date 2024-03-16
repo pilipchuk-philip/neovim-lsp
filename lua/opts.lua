@@ -68,7 +68,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 -- Open vim buffer from last visiting
-vim.cmd [[autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif')]]
+vim.cmd [[
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+]]
 
 -- Diagnostic Icons
 vim.fn.sign_define("DiagnosticSignError",
