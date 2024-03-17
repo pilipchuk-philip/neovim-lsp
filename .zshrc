@@ -1,0 +1,117 @@
+#*********************************#
+# ------------------------------- #
+# ----- Common ------------------ #
+# ------------------------------- #
+#*********************************#
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+source $ZSH/oh-my-zsh.sh
+plugins=(
+    git
+    zsh-autosuggestions
+)
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#*********************************#
+# ------------------------------- #
+# ----- Aliases ----------------- #
+# ------------------------------- #
+#*********************************#
+
+# ----- Notees ------------------ #
+alias notes="cd ~/Code/Notes/better_notes/ && conda activate better_notes"
+# ----- Fastapi ----------------- #
+alias fast_book="cd ~/Code/Fastapi/fastapi_book/ && conda activate fastapi_book "
+alias fast_101="cd ~/Code/Fastapi/fastapi_101/ && conda activate fastapi_101"
+alias fast_102="cd ~/Code/Fastapi/fastapi_102/ && conda activate fastapi_102"
+# ----- Lua --------------------- #
+alias lua_basic="cd ~/Code/Lua/lua_basic_youtube/"
+alias lua_plugin_ex="cd ~/Code/Lua/lua_neovim_plugin_youtube/"
+alias lua_plugin="cd ~/Code/Lua/lua_neovim_plugin/"
+# ----- Go ---------------------- #
+alias go_crazy="cd ~/Code/GoCrazy/"
+# ----- SQL --------------------- #
+alias sql="cd ~/Code/SQL/"
+# ----- JS ---------------------- #
+alias js="cd ~/Code/JavaScript/javascript_ru/"
+
+#*********************************#
+# ------------------------------- #
+# ----- apps -------------------- #
+# ------------------------------- #
+#*********************************#
+
+alias vim="nvim"
+alias ls="exa --long --header --modified --created --git -x --icons"
+alias gs="git status"
+alias gamen="git add . && git commit --amend"
+alias service_postgres_start="brew services start postgresql@16"
+alias service_postgres_stop="brew services stop postgresql@16"
+alias cp="rsync -aP"
+
+#*********************************#
+# ------------------------------- #
+# ----- Custom apps ------------- #
+# ------------------------------- #
+#*********************************#
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+#*********************************#
+# ------------------------------- #
+# ----- Env vars ---------------- #
+# ------------------------------- #
+#*********************************#
+
+export TELEGRAM_TOKEN=""
+export OPENAI_TOKEN=""
+
+#*********************************#
+# ------------------------------- #
+# ----- Conda initialize -------- #
+# ------------------------------- #
+#*********************************#
+
+__conda_setup="$('$HOME/.conda/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/.conda/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/.conda/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="~/.conda/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+cp_p()
+{
+   strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
+      | awk '{
+        count += $NF
+            if (count % 10 == 0) {
+               percent = count / total_size * 100
+               printf "%3d%% [", percent
+               for (i=0;i<=percent;i++)
+                  printf "="
+               printf ">"
+               for (i=percent;i<100;i++)
+                  printf " "
+               printf "]\r"
+            }
+         }
+         END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
+}
+
+alias gc="git branch --sort=committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} --color=always' --pointer='=>' | xargs git checkout"
+
