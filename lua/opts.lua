@@ -59,14 +59,11 @@ vim.g.translate_target = 'en'
 vim.cmd [[ set wildignore+=*__pycache__,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.* ]]
 
 -- [[ Highlight on yank ]]
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
+vim.cmd [[augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END]]
+
 -- Open vim buffer from last visiting
 vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -74,10 +71,10 @@ vim.cmd [[
 
 -- Diagnostic Icons
 vim.fn.sign_define("DiagnosticSignError",
-  { text = " ", texthl = "DiagnosticSignError" })
+    { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn",
-  { text = " ", texthl = "DiagnosticSignWarn" })
+    { text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo",
-  { text = " ", texthl = "DiagnosticSignInfo" })
+    { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint",
-  { text = "󰌵", texthl = "DiagnosticSignHint" })
+    { text = "󰌵", texthl = "DiagnosticSignHint" })
