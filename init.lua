@@ -1,8 +1,3 @@
--- One possible example:
--- - https://learnxinyminutes.com/docs/lua/
---  - https://neovim.io/doc/user/lua-guide.html
---
-
 vim.g.mapleader = ' ' -- Set <space> as the leader key
 vim.g.maplocalleader = ' '
 
@@ -21,6 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  { "rmagatti/auto-session" },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -41,7 +37,7 @@ require('lazy').setup({
   {
     "ThePrimeagen/refactoring.nvim",
     config = function()
-      require("refactoring").setup()
+      require("refactoring").setup({})
     end,
   },
   {
@@ -173,12 +169,14 @@ require('lazy').setup({
 }, {})
 
 require('keymaps')
-require('opts')
-require('custom.configs.telescope')
-require('custom.configs.treesitter')
-require('custom.configs.cmp')
-require('custom.configs.lsp')
-require('custom.configs.neotree')
-require('custom.configs.ui')
-require('custom.configs.null_ls')
-require('custom.configs.git')
+require("git")
+require("opts")
+require("core")         -- + ?
+require("autocomplete") -- +
+require("diagnostics")
+require("highlight")
+require("keymaps")
+require("search")
+require("ui")
+require("lsp")
+require("neotree")
