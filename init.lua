@@ -35,12 +35,6 @@ require('lazy').setup({
     end,
   },
   {
-    "ThePrimeagen/refactoring.nvim",
-    config = function()
-      require("refactoring").setup({})
-    end,
-  },
-  {
     "lewis6991/hover.nvim",
   },
   { 'davidgranstrom/nvim-markdown-preview' },
@@ -81,6 +75,20 @@ require('lazy').setup({
       { 'folke/neodev.nvim' },      -- lua lang helper
       { 'ryanoasis/vim-devicons' }, -- Icons
       -- { 'kyazdani42/nvim-web-devicons' }, -- Icons
+    },
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
     },
   },
   { 'lewis6991/gitsigns.nvim', },
@@ -140,15 +148,28 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
   {
-    "NeogitOrg/neogit",
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
     dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "sindrets/diffview.nvim",        -- optional - Diff integration
-      "nvim-telescope/telescope.nvim", -- optional
-    },
-    config = true
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
   },
-  { 'akinsho/git-conflict.nvim', version = "*", config = true },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
@@ -168,15 +189,14 @@ require('lazy').setup({
 
 }, {})
 
-require('keymaps')
-require("git")
-require("opts")
-require("core")         -- + ?
-require("autocomplete") -- +
-require("diagnostics")
-require("highlight")
 require("keymaps")
-require("search")
-require("ui")
-require("lsp")
-require("neotree")
+require("core")         -- + ?
+require("git")          -- -
+require("autocomplete") -- +
+require("diagnostics")  -- +
+require("highlight")    -- +
+require("search")       -- + возможно его нужно удалить
+require("ui")           -- +
+require("lsp")          -- +
+require("neotree")      -- +
+require("ai")           -- +

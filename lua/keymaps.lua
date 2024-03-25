@@ -80,11 +80,9 @@ vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })
---
--- Missing LSP
---
--- vim.lsp.buf.implementation()|
--- vim.lsp.buf.code_action()|
+
+--- Code actions
+vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
 
 -- [Telescope] Search
 keymap('n', '<C-r>', ':IncRename ')
@@ -95,3 +93,12 @@ keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
+
+--- Rename
+keymap('n', '<leader>r', ':IncRename')
+--------------- GIT ---------------
+--- Git sings
+keymap('n', '<leader>hp', ':lua package.loaded.gitsigns.preview_hunk()')
+keymap('n', '<leader>lg', ':LazyGit <CR>')
+keymap('n', '<leader>g', ':ChatGPT <CR>')
+keymap('v', '<leader>g', ':ChatGPTEditWithInstructions <CR>')
