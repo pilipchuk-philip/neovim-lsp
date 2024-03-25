@@ -90,9 +90,9 @@ require("lualine").setup {
   },
   sections = {
     lualine_a = { { 'mode', icons_enabled = true } },
-    lualine_b = { 'diagnostics', { 'filename', file_status = true, path = 1, } },
+    lualine_b = { 'diagnostics', { 'filename', file_status = true, path = 1, icons_enabled = true } },
     lualine_c = { { 'branch', icons_enabled = true } },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'encoding', 'fileformat', { 'filetype', icons_enabled = true } },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
@@ -154,4 +154,17 @@ require("hover").setup {
     'LSP'
   },
   mouse_delay = 1000
+}
+
+-- RESTORE SESSION (if its posible)
+require("auto-session").setup {
+  log_level = "error",
+
+  cwd_change_handling = {
+    restore_upcoming_session = true,
+    pre_cwd_changed_hook = nil,
+    post_cwd_changed_hook = function()
+      require("lualine").refresh()
+    end,
+  },
 }

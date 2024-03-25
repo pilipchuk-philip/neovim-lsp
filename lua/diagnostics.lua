@@ -46,3 +46,5 @@ for _, file_pattern in ipairs({ "*.rs", "*.hs", "*.py", "*.lua", "*.md", "*.nix"
     }
   )
 end
+
+--

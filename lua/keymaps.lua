@@ -57,6 +57,7 @@ keymap('n', 'sl', '<C-w>l', { silent = true })
 keymap('n', 'sk', '<C-w>k', { silent = true })
 keymap('n', 'sj', '<C-w>j', { silent = true })
 
+
 -- Comments
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-/>', '<Plug>kommentary_line_default <CR>')
