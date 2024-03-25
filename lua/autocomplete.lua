@@ -1,7 +1,7 @@
--- [[ Configure nvim-cmp ]]
--- See `:help cmp`
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local luasnip = require 'luasnip' -- snippets
+local cmp = require('cmp')        -- autocomple
+local lspkind = require('lspkind')
+
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
@@ -50,9 +50,6 @@ cmp.setup {
   },
 }
 
-local fn = vim.fn
-local cmp = require('cmp')
-local lspkind = require('lspkind')
 
 
 cmp.setup({
@@ -68,7 +65,6 @@ cmp.setup({
     },
   },
   preselect = cmp.PreselectMode.None,
-  -- lspkind (icons for cmp)
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol_text',

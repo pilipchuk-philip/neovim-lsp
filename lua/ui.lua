@@ -1,3 +1,4 @@
+------- Theme -------
 require("catppuccin").setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = {     -- :h background
@@ -51,34 +52,13 @@ require("catppuccin").setup({
 
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
-require("lsp_signature").setup {
-  hint_prefix = "", -- Fix disable pictogram
-}
+
+------- Indent Blank Lines -------
 require("ibl").setup {
   scope = { enabled = false },
 }
-require("illuminate").configure({
-  providers = {
-    'lsp',
-    'treesitter',
-    'regex',
-  },
-  delay = 100,
-  filetype_overrides = {},
-  filetypes_denylist = {
-    'dirvish',
-  },
-  filetypes_allowlist = {},
-  modes_denylist = {},
-  modes_allowlist = {},
-  providers_regex_syntax_denylist = {},
-  providers_regex_syntax_allowlist = {},
-  under_cursor = true,
-  large_file_cutoff = nil,
-  large_file_overrides = nil,
-  min_count_to_highlight = 1,
-})
 
+------- Lua Line -------
 require("lualine").setup {
   options = {
     icons_enabled = true,
@@ -106,6 +86,7 @@ require("lualine").setup {
   },
 }
 
+------- Wilder -------
 require("wilder").setup({
   modes = { ':', '/', '?' },
   next_key = '<TAB>',
@@ -121,9 +102,11 @@ require("wilder").set_option('renderer', require("wilder").popupmenu_renderer(
   })
 ))
 
+------- Autoclose -------
 require("autoclose").setup()
+------- Folds -------
 require("better-folds").setup()
-
+------- transparent -------
 require("transparent").setup({ -- Optional, you don't have to run setup.
   groups = {                   -- table: default groups
     'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
@@ -140,7 +123,7 @@ vim.cmd [[
   highlight Visual cterm=NONE ctermbg=Black ctermfg=Black guibg=LightYellow guifg=Black
 ]]
 
--- Documentation nice bordered floating window
+------- Documentation nice bordered floating window  -------
 require("hover").setup {
   init = function()
     require("hover.providers.lsp")
@@ -156,15 +139,17 @@ require("hover").setup {
   mouse_delay = 1000
 }
 
--- RESTORE SESSION (if its posible)
-require("auto-session").setup {
-  log_level = "error",
+------- Highlight on yank -------
+vim.cmd [[augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END]]
 
-  cwd_change_handling = {
-    restore_upcoming_session = true,
-    pre_cwd_changed_hook = nil,
-    post_cwd_changed_hook = function()
-      require("lualine").refresh()
-    end,
-  },
-}
+------- Signature -------
+require "lsp_signature".setup({
+  hint_prefix = "", -- Fix disable pictogram
+  bind = true,
+  handler_opts = {
+    border = "rounded"
+  }
+})

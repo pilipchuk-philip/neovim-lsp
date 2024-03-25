@@ -57,3 +57,21 @@ vim.o.termguicolors = true
 vim.g.translate_source = 'ru'
 vim.g.translate_target = 'en'
 vim.cmd [[ set wildignore+=*__pycache__,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.* ]]
+
+-- Open vim buffer from last visiting
+vim.cmd [[
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+]]
+
+-- RESTORE SESSION (if its posible)
+require("auto-session").setup {
+  log_level = "error",
+
+  cwd_change_handling = {
+    restore_upcoming_session = true,
+    pre_cwd_changed_hook = nil,
+    post_cwd_changed_hook = function()
+      require("lualine").refresh()
+    end,
+  },
+}

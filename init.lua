@@ -168,15 +168,13 @@ require('lazy').setup({
 
 }, {})
 
-require('keymaps')
-require("git")
-require("opts")
-require("core")         -- + ?
-require("autocomplete") -- +
-require("diagnostics")
-require("highlight")
 require("keymaps")
-require("search")
-require("ui")
-require("lsp")
-require("neotree")
+require("core")         -- + ?
+require("git")          -- -
+require("autocomplete") -- +
+require("diagnostics")  -- +
+require("highlight")    -- +
+require("search")       -- + возможно его нужно удалить
+require("ui")           -- +
+require("lsp")          -- +
+require("neotree")      -- +
