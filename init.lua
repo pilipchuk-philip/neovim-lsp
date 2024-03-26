@@ -35,12 +35,6 @@ require('lazy').setup({
     end,
   },
   {
-    "ThePrimeagen/refactoring.nvim",
-    config = function()
-      require("refactoring").setup({})
-    end,
-  },
-  {
     "lewis6991/hover.nvim",
   },
   { 'davidgranstrom/nvim-markdown-preview' },
@@ -96,11 +90,6 @@ require('lazy').setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
   },
   { 'lewis6991/gitsigns.nvim', },
   { 'nvim-lualine/lualine.nvim', },
@@ -158,7 +147,6 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-  { 'akinsho/git-conflict.nvim', version = "*", config = true },
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
