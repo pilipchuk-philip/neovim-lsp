@@ -8,7 +8,8 @@ if vim.loop.os_uname().sysname == "Darwin" then
 else
   vim.cmd [[ vmap <C-c> "+y ]]
 end
---
+
+--------------
 function vim.getVisualSelection()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg('v')
@@ -27,6 +28,17 @@ keymap('v', '<C-f>', function()
   tb.live_grep({ default_text = text })
 end)
 
+-------------- My Toogle
+function ToggleFoldMethod()
+  if vim.o.foldmethod == 'indent' then
+    vim.o.foldmethod = 'marker'
+  else
+    vim.o.foldmethod = 'indent'
+  end
+end
+
+keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
+
 -- See `:help vim.keymap.set()`
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -41,7 +53,7 @@ keymap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diag
 keymap('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 --- NERDTRee
-keymap({ 'n', 'v' }, '<BS>', ':Neotree toggle<CR>', { silent = true })
+keymap({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })
 
 -- Tabs, Splits
 keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
