@@ -100,7 +100,11 @@ vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
 keymap('n', '<C-r>', ':IncRename ')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 
-keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fd,--type,f,--exclude,.git<CR>')
+if vim.loop.os_uname().sysname == "Darwin" then
+  keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fd,--type,f,--exclude,.git<CR>')
+else
+  keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fdfind,--type,f,--exclude,.git<CR>')
+end
 keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
