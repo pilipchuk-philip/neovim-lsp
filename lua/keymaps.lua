@@ -88,22 +88,17 @@ end
 keymap('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 
--- LSP
+--------------- LSP ---------------
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })
+vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
 keymap('n', 'gf',
   ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
   { silent = true }
 )
-
 --- Code actions
 vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
-
--- [Telescope] Search
-keymap('n', '<C-r>', ':IncRename ')
-keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
-
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fd,--type,f,--exclude,.git<CR>')
 else
@@ -113,12 +108,18 @@ keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
+keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 
 --- Rename
 keymap('n', '<leader>r', ':IncRename')
+
 --------------- GIT ---------------
---- Git sings
-keymap('n', '<leader>hp', ':lua package.loaded.gitsigns.preview_hunk()')
 keymap('n', '<leader>lg', ':LazyGit <CR>')
-keymap('n', '<leader>g', ':ChatGPT <CR>')
-keymap('v', '<leader>g', ':ChatGPTEditWithInstructions <CR>')
+keymap('n', '<leader>gh', ':lua package.loaded.gitsigns.preview_hunk()')
+keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>')
+
+--------------- CodeActions ---------------
+keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
+--------------- Chat ---------------
+keymap('n', '<leader>c', ':ChatGPT <CR>')
+keymap('v', '<leader>c', ':ChatGPTEditWithInstructions <CR>')
