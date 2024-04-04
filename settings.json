@@ -23,19 +23,14 @@
     "debug.toolBarLocation": "commandCenter",
     "files.trimTrailingWhitespace": true,
     "editor.formatOnPaste": true,
-    "todohighlight.isCaseSensitive": false,
     "workbench.colorTheme": "Catppuccin Mocha",
     "explorer.confirmDragAndDrop": false,
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 5432,
-            "driver": "PostgreSQL",
-            "name": "test",
-            "database": "web_dev",
-            "username": "postgres"
-        }
-    ],
     "terminal.integrated.gpuAcceleration": "off",
+    "gitlens.ai.experimental.provider": "openai",
+    "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
+    "yaml.schemas": {
+        "file:///Users/filipppilipcuk/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.jira.enabled": true,
+    "atlascode.bitbucket.enabled": false
 }

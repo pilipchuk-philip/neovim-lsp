@@ -37,9 +37,13 @@ require('lazy').setup({
   {
     "lewis6991/hover.nvim",
   },
+  {
+    "isak102/telescope-git-file-history.nvim",
+    dependencies = { "tpope/vim-fugitive" }
+  },
   { 'davidgranstrom/nvim-markdown-preview' },
   { 'xiyaowong/transparent.nvim' },
-  { 'kylechui/nvim-surround' },
+  -- { 'kylechui/nvim-surround' },
   { 'm4xshen/autoclose.nvim' },
   { 'snelling-a/better-folds.nvim' },
   { 'b3nj5m1n/kommentary' },
@@ -127,7 +131,18 @@ require('lazy').setup({
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-      require("chatgpt").setup()
+      require("chatgpt").setup({
+        openai_params = {
+          -- model = "gpt-3.5-turbo",
+          model = "gpt-4",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          max_tokens = 300,
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+      })
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",

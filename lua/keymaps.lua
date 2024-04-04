@@ -92,6 +92,10 @@ vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })
+keymap('n', 'gf',
+  ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
+  { silent = true }
+)
 
 --- Code actions
 vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
