@@ -97,8 +97,10 @@ keymap('n', 'gf',
   ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
   { silent = true }
 )
---- Code actions
 vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
+
+
+--------------- TELESCOPE ---------------
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fd,--type,f,--exclude,.git<CR>')
 else
@@ -110,7 +112,7 @@ keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 
---- Rename
+--------------- RENAME ---------------
 keymap('n', '<leader>r', ':IncRename')
 
 --------------- GIT ---------------
@@ -120,6 +122,7 @@ keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history
 
 --------------- CodeActions ---------------
 keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
+--
 --------------- Chat ---------------
 keymap('n', '<leader>c', ':ChatGPT <CR>')
 keymap('v', '<leader>c', ':ChatGPTEditWithInstructions <CR>')
