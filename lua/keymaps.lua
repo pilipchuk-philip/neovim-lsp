@@ -9,7 +9,7 @@ else
   vim.cmd [[ vmap <C-c> "+y ]]
 end
 
---------------
+-------------- Func: C-F by name ---------
 function vim.getVisualSelection()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg('v')
@@ -27,8 +27,23 @@ keymap('v', '<C-f>', function()
   local text = vim.getVisualSelection()
   tb.live_grep({ default_text = text })
 end)
+-------------- Func: Copy Rel Path ---------
+function copy_relative_path()
+  -- Получаем путь к текущему файлу в буфере
+  local current_file = vim.fn.expand('%')
+  -- Получаем рабочую директорию проекта
+  local project_root = vim.fn.getcwd()
+  -- Определяем относительный путь
+  local relative_path = vim.fn.fnamemodify(current_file, ':.')
+  -- Копируем относительный путь в буфер обмена
+  vim.fn.setreg('+', relative_path)
+  print('Относительный путь скопирован в буфер обмена: ' .. relative_path)
+end
 
--------------- My Toogle
+vim.api.nvim_set_keymap('n', '<leader>y', ':lua copy_relative_path()<CR>', { noremap = true, silent = true })
+
+-------------- Func: Autofold -----------
+-- methods by indent
 function ToggleFoldMethod()
   if vim.o.foldmethod == 'indent' then
     vim.o.foldmethod = 'marker'
