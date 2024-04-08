@@ -16,7 +16,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { "rmagatti/auto-session" },
   {
     "catppuccin/nvim",
     name = "catppuccin",

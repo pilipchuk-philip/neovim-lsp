@@ -63,21 +63,6 @@ vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 ]]
 
-------------- Restore session ---------------
--- RESTORE SESSION (if its posible)
-require("auto-session").setup {
-    log_level = "error",
-    auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-
-    cwd_change_handling = {
-        restore_upcoming_session = true,
-        pre_cwd_changed_hook = nil,
-        post_cwd_changed_hook = function()
-            require("lualine").refresh()
-        end,
-    },
-}
-
 ------------- Nerdtree fix ---------------
 vim.cmd [[
  let g:bookmark_no_default_key_mappings = 1
