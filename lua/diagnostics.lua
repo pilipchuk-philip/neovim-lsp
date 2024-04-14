@@ -19,14 +19,14 @@ local sources = {
       "html", "json", "yaml", "markdown"
     }
   }),
-  formatting.isort.with({
+  --[[ formatting.isort.with({
     filetypes = {
       "python"
     },
     extra_args = {
       "--force-single-line-imports",
     },
-  }),
+  }), ]]
   formatting.black.with({
     filetypes = {
       "python"
