@@ -34,7 +34,7 @@ vim.opt.ignorecase  = true
 vim.opt.smartcase   = true
 vim.opt.showmatch   = true
 vim.opt.showmode    = true
-vim.opt.hlsearch    = true
+vim.opt.hlsearch    = false
 vim.opt.incsearch   = true
 vim.opt.virtualedit = "all" -- Allow virtual editing in all modes
 vim.opt.fileformats = "unix,dos,mac"
@@ -44,6 +44,11 @@ vim.opt.swapfile    = false -- do not write annoying intermediate swap
 vim.opt.undofile    = true  -- Возможность отката назад
 vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 vim.opt.shell = 'zsh'
+
+vim.opt.relativenumber = true
+vim.opt.smartindent = true
+vim.opt.scrolloff = 8
+
 
 -- Encoding
 vim.opt.encoding = 'utf-8'
