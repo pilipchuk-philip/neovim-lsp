@@ -124,6 +124,7 @@ end
 keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
+keymap('n', '<C-g>g', ':Telescope git_file_history<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 

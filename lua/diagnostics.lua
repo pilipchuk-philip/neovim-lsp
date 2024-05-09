@@ -7,7 +7,7 @@ local completion = null_ls.builtins.completion
 
 ------- Format code -------
 local sources = {
-  code_actions.refactoring,
+  -- code_actions.refactoring,
   code_actions.gitsigns,
   diagnostics.mypy.with({
     filetypes = {
