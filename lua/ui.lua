@@ -71,9 +71,15 @@ require("lualine").setup {
   sections = {
     lualine_a = { { 'mode', icons_enabled = true } },
     lualine_b = { 'diagnostics', { 'filename', file_status = true, path = 1, icons_enabled = true } },
-    lualine_c = { 'diff', { 'branch', icons_enabled = true } },
+    lualine_c = { { 'branch', icons_enabled = true }, 'diff', },
     lualine_x = { 'encoding', 'fileformat', { 'filetype', icons_enabled = true } },
-    lualine_y = { 'progress' },
+
+    lualine_y = {
+      {
+        function()
+          return require('lsp-progress').progress()
+        end,
+      }, 'progress' },
     lualine_z = { 'location' }
   },
   inactive_sections = {
@@ -86,6 +92,12 @@ require("lualine").setup {
   },
 }
 
+vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  group = "lualine_augroup",
+  pattern = "LspProgressStatusUpdated",
+  callback = require("lualine").refresh,
+})
 ------- Wilder -------
 require("wilder").setup({
   modes = { ':', '/', '?' },

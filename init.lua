@@ -74,7 +74,6 @@ require('lazy').setup({
     dependencies = {
       { 'williamboman/mason.nvim',          config = true },
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'j-hui/fidget.nvim',                opts = {} },
       { 'folke/neodev.nvim' },      -- lua lang helper
       { 'ryanoasis/vim-devicons' }, -- Icons
       -- { 'kyazdani42/nvim-web-devicons' }, -- Icons
@@ -149,6 +148,13 @@ require('lazy').setup({
       require("refactoring").setup()
     end,
   },
+  {
+    'linrongbin16/lsp-progress.nvim',
+    config = function()
+      require('lsp-progress').setup()
+    end
+  },
+
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
