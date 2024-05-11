@@ -85,6 +85,7 @@ keymap('n', 'sk', '<C-w>k', { silent = true })
 keymap('n', 'sj', '<C-w>j', { silent = true })
 
 
+
 -- Comments
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-/>', '<Plug>kommentary_line_default <CR>')
@@ -127,6 +128,7 @@ keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-g>g', ':Telescope git_file_history<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
+keymap('n', 'ma', ':Telescope vim_bookmarks all<CR>', { silent = true })
 
 --------------- RENAME ---------------
 keymap('n', '<leader>r', ':IncRename')

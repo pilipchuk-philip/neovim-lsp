@@ -144,7 +144,12 @@ require('lazy').setup({
       require('lsp-progress').setup()
     end
   },
-
+  {
+    "nvim-telescope/telescope-live-grep-args.nvim",
+  },
+  {
+    "tom-anders/telescope-vim-bookmarks.nvim",
+  },
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
