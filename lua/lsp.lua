@@ -37,7 +37,7 @@ mason_lspconfig.setup_handlers {
 local lspconfig = require 'lspconfig'
 
 -- overwrite pyright default settings
-lspconfig.pyright.setup({
+--[[ lspconfig.pyright.setup({
   on_attach = on_attach,
   settings = {
     pyright = {
@@ -51,4 +51,7 @@ lspconfig.pyright.setup({
       },
     },
   },
-})
+}) ]]
+
+-- overwrite pyright default settings
+lspconfig.jedi_language_server.setup({})

@@ -6,7 +6,8 @@ family = "MesloLGS NF"
 
 
 [window]
-startup_mode = "Windowed"
+# startup_mode = "Windowed"
+startup_mode = "Fullscreen"
 dynamic_padding = true
 opacity = 0.97
 
