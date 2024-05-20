@@ -1,0 +1,2 @@
+os:
+ open: 'tmux split-window -h -t 0 && tmux send-keys -t 0 "nvim {{filename}}" C-m'
