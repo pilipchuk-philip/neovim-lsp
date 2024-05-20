@@ -128,7 +128,7 @@ keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-g>g', ':Telescope git_file_history<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
-keymap('n', 'ma', ':Telescope vim_bookmarks all<CR>', { silent = true })
+keymap('n', '<C-b>', ':Telescope vim_bookmarks all<CR>')
 
 --------------- RENAME ---------------
 keymap('n', '<leader>r', ':IncRename')
