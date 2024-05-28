@@ -113,7 +113,9 @@ keymap('n', 'gf',
   ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
   { silent = true }
 )
+keymap('n', 'gt', ':TodoTelescope<CR>', { silent = true })
 vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
+
 
 
 --------------- TELESCOPE ---------------
