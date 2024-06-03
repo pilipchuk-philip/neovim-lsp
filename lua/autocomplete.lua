@@ -1,9 +1,9 @@
-local luasnip = require 'luasnip' -- snippets
-local cmp = require('cmp')        -- autocomple
+local luasnip = require('luasnip') -- snippets
+local cmp = require('cmp')         -- autocomple
 local lspkind = require('lspkind')
 
 require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
+luasnip.config.setup()
 
 cmp.setup({
   window = {

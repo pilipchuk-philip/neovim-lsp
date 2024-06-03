@@ -123,9 +123,14 @@ require('lazy').setup({
   { 'tpope/vim-sleuth' },      -- Detect tabstop and shiftwidth automatically
   { 'RRethy/vim-illuminate' }, -- Highlight Same
   {
-    'hrsh7th/nvim-cmp',        -- Autocompletion
+    "L3MON4D3/LuaSnip",
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  },
+  {
+    'hrsh7th/nvim-cmp', -- Autocompletion
     dependencies = {
-      { 'L3MON4D3/LuaSnip' },
       { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-cmdline' },
