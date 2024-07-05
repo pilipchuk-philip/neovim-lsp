@@ -4,3 +4,4 @@ package-lock.json
 package.json
 lua/.luarc.json
 .zshrc
+lazy-lock.json

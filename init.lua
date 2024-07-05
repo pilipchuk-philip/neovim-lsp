@@ -174,12 +174,14 @@ require('lazy').setup({
     main = 'ibl',
     opts = {},
   },
-  -- Fuzzy Finder (files, lsp, etc)
+  -- Telescope (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-live-grep-args.nvim',
+      'tom-anders/telescope-vim-bookmarks.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
@@ -218,12 +220,6 @@ require('lazy').setup({
     end
   },
   {
-    "nvim-telescope/telescope-live-grep-args.nvim",
-  },
-  {
-    "tom-anders/telescope-vim-bookmarks.nvim",
-  },
-  {
     "christoomey/vim-tmux-navigator",
     cmd = {
       "TmuxNavigateLeft",
@@ -239,7 +235,6 @@ require('lazy').setup({
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
     },
   },
-
 }, {})
 
 require("keymaps")
@@ -252,3 +247,4 @@ require("search")       -- + возможно его нужно удалить
 require("ui")           -- +
 require("lsp")          -- +
 require("ai")           -- +
+-- require("catpuchin")

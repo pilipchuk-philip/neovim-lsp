@@ -2,7 +2,7 @@ require('gitsigns').setup {
   signs                        = {
     add          = { text = '│' },
     change       = { text = '│' },
-    delete       = { text = '_' },
+    delete       = { text = '-' },
     topdelete    = { text = '‾' },
     changedelete = { text = '~' },
     untracked    = { text = '┆' },
@@ -35,8 +35,5 @@ require('gitsigns').setup {
     relative = 'cursor',
     row = 0,
     col = 1
-  },
-  yadm                         = {
-    enable = false
   },
 }

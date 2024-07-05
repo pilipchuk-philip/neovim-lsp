@@ -52,7 +52,6 @@ vim.opt.scrolloff = 8
 
 -- Encoding
 vim.opt.encoding = 'utf-8'
-vim.opt.termencoding = 'uft-8'
 vim.scriptencoding = 'utf-8'
 vim.opt.fileformat = 'unix'
 
@@ -96,3 +95,21 @@ endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 ]]
+
+------------- Help always right ---------------
+-- Функция для открытия окна помощи справа
+local function open_help_on_right()
+    if vim.bo.filetype == 'help' then
+        vim.cmd('wincmd L')
+    end
+end
+
+-- Создание группы автокоманд
+vim.api.nvim_create_augroup('HelpOnRight', { clear = true })
+
+-- Добавление автокоманды для открытия окна помощи справа
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = '*.txt',
+    callback = open_help_on_right,
+    group = 'HelpOnRight',
+})
