@@ -1,3 +1,24 @@
+-- Map Leader
+vim.g.mapleader = ' ' -- Set <space> as the leader key
+vim.g.maplocalleader = ' '
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- Set highlight on search
 vim.o.hlsearch      = false
 
@@ -49,7 +70,6 @@ vim.opt.relativenumber = true
 vim.opt.smartindent = true
 vim.opt.scrolloff = 8
 
-
 -- Encoding
 vim.opt.encoding = 'utf-8'
 vim.scriptencoding = 'utf-8'
@@ -62,54 +82,21 @@ vim.g.translate_source = 'ru'
 vim.g.translate_target = 'en'
 vim.cmd [[ set wildignore+=*__pycache__,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.* ]]
 
+
 -- Open vim buffer from last visiting
 vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 ]]
 
-------------- Nerdtree fix ---------------
-vim.cmd [[
- let g:bookmark_no_default_key_mappings = 1
-function! BookmarkMapKeys()
-    nmap mm :BookmarkToggle<CR>
-    nmap mi :BookmarkAnnotate<CR>
-    nmap mn :BookmarkNext<CR>
-    nmap mp :BookmarkPrev<CR>
-    nmap ma :BookmarkShowAll<CR>
-    nmap mc :BookmarkClear<CR>
-    nmap mx :BookmarkClearAll<CR>
-    nmap mkk :BookmarkMoveUp
-    nmap mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap mm
-    unmap mi
-    unmap mn
-    unmap mp
-    unmap ma
-    unmap mc
-    unmap mx
-    unmap mkk
-    unmap mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
-]]
-
-------------- Help always right ---------------
--- Функция для открытия окна помощи справа
-local function open_help_on_right()
-    if vim.bo.filetype == 'help' then
-        vim.cmd('wincmd L')
-    end
-end
-
--- Создание группы автокоманд
-vim.api.nvim_create_augroup('HelpOnRight', { clear = true })
-
--- Добавление автокоманды для открытия окна помощи справа
-vim.api.nvim_create_autocmd('BufEnter', {
-    pattern = '*.txt',
-    callback = open_help_on_right,
-    group = 'HelpOnRight',
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
 })

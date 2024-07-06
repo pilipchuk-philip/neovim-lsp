@@ -84,8 +84,6 @@ keymap('n', 'sl', '<C-w>l', { silent = true })
 keymap('n', 'sk', '<C-w>k', { silent = true })
 keymap('n', 'sj', '<C-w>j', { silent = true })
 
-
-
 -- Comments
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-/>', '<Plug>kommentary_line_default <CR>')
@@ -94,10 +92,11 @@ else
   keymap('n', '<C-_>', '<Plug>kommentary_line_default<CR>')
   keymap('v', '<C-_>', '<Plug>kommentary_visual_default<CR>')
 end
-
 if vim.env.TMUX then
   keymap('n', '', '<Plug>kommentary_line_default<CR>')
   keymap('v', '', '<Plug>kommentary_visual_default<CR>')
+  -- keymap('n', '//', '<Plug>kommentary_line_default<CR>')
+  keymap('n', '<C-/>', '<Plug>kommentary_visual_default <CR>')
 end
 
 -- Hover Doc
@@ -115,8 +114,6 @@ keymap('n', 'gf',
 )
 keymap('n', 'gt', ':TodoTelescope<CR>', { silent = true })
 vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
-
-
 
 --------------- TELESCOPE ---------------
 if vim.loop.os_uname().sysname == "Darwin" then
