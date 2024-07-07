@@ -3,9 +3,11 @@ return {
   dependencies = {
     { 'williamboman/mason.nvim',          config = true },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'folke/neodev.nvim' },      -- lua lang helper
-    { 'ryanoasis/vim-devicons' }, -- Icons
-    -- { 'kyazdani42/nvim-web-devicons' }, -- Icons
+    { 'folke/neodev.nvim' },              -- lua lang helper
+    { 'ryanoasis/vim-devicons' },         -- Icons
+    { 'ray-x/lsp_signature.nvim' },       -- переменные в функции
+    { 'linrongbin16/lsp-progress.nvim' }, -- status lsp
+    { 'kyazdani42/nvim-web-devicons' },   -- Icons
   },
   config = function()
     require('mason').setup()
@@ -62,8 +64,17 @@ return {
         },
       },
     }) ]]
+    lspconfig.jedi_language_server.setup({})
+    -- Signature
+    require "lsp_signature".setup({
+      hint_prefix = "", -- Fix disable pictogram
+      bind = true,
+      handler_opts = {
+        border = "rounded"
+      }
+    })
 
     -- overwrite pyright default settings
-    lspconfig.jedi_language_server.setup({})
+    require('lsp-progress').setup({})
   end,
 }

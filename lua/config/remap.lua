@@ -9,7 +9,7 @@ else
   vim.cmd [[ vmap <C-c> "+y ]]
 end
 
--------------- Func: C-F by name ---------
+-- Func: C-F by name
 function vim.getVisualSelection()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg('v')
@@ -27,7 +27,8 @@ keymap('v', '<C-f>', function()
   local text = vim.getVisualSelection()
   tb.live_grep({ default_text = text })
 end)
--------------- Func: Copy Rel Path ---------
+
+-- Func: Copy Rel Path
 function copy_relative_path()
   -- Получаем путь к текущему файлу в буфере
   local current_file = vim.fn.expand('%')
@@ -42,7 +43,7 @@ end
 
 vim.api.nvim_set_keymap('n', '<leader>y', ':lua copy_relative_path()<CR>', { noremap = true, silent = true })
 
--------------- Func: Autofold -----------
+-- Func: Autofold
 -- methods by indent
 function ToggleFoldMethod()
   if vim.o.foldmethod == 'indent' then
@@ -95,15 +96,13 @@ end
 if vim.env.TMUX then
   keymap('n', '', '<Plug>kommentary_line_default<CR>')
   keymap('v', '', '<Plug>kommentary_visual_default<CR>')
-  -- keymap('n', '//', '<Plug>kommentary_line_default<CR>')
-  keymap('n', '<C-/>', '<Plug>kommentary_visual_default <CR>')
 end
 
 -- Hover Doc
 keymap('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 
---------------- LSP ---------------
+-- LSP
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })
@@ -115,7 +114,7 @@ keymap('n', 'gf',
 keymap('n', 'gt', ':TodoTelescope<CR>', { silent = true })
 vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
 
---------------- TELESCOPE ---------------
+-- TELESCOPE
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fd,--type,f,--exclude,.git<CR>')
 else
@@ -129,17 +128,17 @@ keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR
 keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
 keymap('n', '<leader>b', ':Telescope vim_bookmarks all<CR>')
 
---------------- RENAME ---------------
+-- RENAME
 keymap('n', '<leader>r', ':IncRename')
 
---------------- GIT ---------------
+-- GIT
 keymap('n', '<leader>lg', ':LazyGit <CR>')
 keymap('n', '<leader>gh', ':lua package.loaded.gitsigns.preview_hunk()')
 keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>')
 
---------------- CodeActions ---------------
+-- CodeActions
 keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
---
---------------- Chat ---------------
+
+-- Chat
 keymap('n', '<leader>c', ':ChatGPT <CR>')
 keymap('v', '<leader>c', ':ChatGPTEditWithInstructions <CR>')

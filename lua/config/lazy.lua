@@ -17,17 +17,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
+-- OPTS
 vim.opt.rtp:prepend(lazypath)
-
 -- Set highlight on search
 vim.o.hlsearch      = false
-
 -- Make line numbers default
 vim.wo.number       = true
-
 -- Enable mouse mode
 vim.o.mouse         = 'a'
-
 -- Default TABS
 vim.o.tabstop       = 4    -- A TAB character looks like 4 spaces
 vim.o.expandtab     = true -- Pressing the TAB key will insert spaces instead of a TAB character
@@ -88,15 +85,11 @@ vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 ]]
 
--- Setup lazy.nvim
+-- Lazy plugins
 require("lazy").setup({
   spec = {
-    -- import your plugins
     { import = "plugins" },
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
 })
