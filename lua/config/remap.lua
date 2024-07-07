@@ -1,75 +1,19 @@
 local keymap = vim.keymap.set
 local tb = require('telescope.builtin')
 
-keymap('n', ';', ':', { silent = true })
-
-if vim.loop.os_uname().sysname == "Darwin" then
-  vim.cmd [[ vmap <C-c> "*y ]]
-else
-  vim.cmd [[ vmap <C-c> "+y ]]
-end
-
--- Func: C-F by name
-function vim.getVisualSelection()
-  vim.cmd('noau normal! "vy"')
-  local text = vim.fn.getreg('v')
-  vim.fn.setreg('v', {})
-
-  text = string.gsub(text, "\n", "")
-  if #text > 0 then
-    return text
-  else
-    return ''
-  end
-end
-
-keymap('v', '<C-f>', function()
-  local text = vim.getVisualSelection()
-  tb.live_grep({ default_text = text })
-end)
-
--- Func: Copy Rel Path
-function copy_relative_path()
-  -- Получаем путь к текущему файлу в буфере
-  local current_file = vim.fn.expand('%')
-  -- Получаем рабочую директорию проекта
-  local project_root = vim.fn.getcwd()
-  -- Определяем относительный путь
-  local relative_path = vim.fn.fnamemodify(current_file, ':.')
-  -- Копируем относительный путь в буфер обмена
-  vim.fn.setreg('+', relative_path)
-  print('Относительный путь скопирован в буфер обмена: ' .. relative_path)
-end
-
-vim.api.nvim_set_keymap('n', '<leader>y', ':lua copy_relative_path()<CR>', { noremap = true, silent = true })
-
--- Func: Autofold
--- methods by indent
-function ToggleFoldMethod()
-  if vim.o.foldmethod == 'indent' then
-    vim.o.foldmethod = 'marker'
-  else
-    vim.o.foldmethod = 'indent'
-  end
-end
-
-keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
+------------------------------------------
+-- Basics
+-- Map Leader
+vim.g.mapleader = ' ' -- Set <space> as the leader key
+vim.g.maplocalleader = ' '
 
 -- See `:help vim.keymap.set()`
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+keymap('n', ';', ':', { silent = true })
 
 -- Remap for dealing with word wrap
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Diagnostic keymaps
-keymap('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-keymap('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-keymap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-keymap('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
---- NERDTRee
-keymap({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })
 
 -- Tabs, Splits
 keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
@@ -98,6 +42,65 @@ if vim.env.TMUX then
   keymap('v', '', '<Plug>kommentary_visual_default<CR>')
 end
 
+-- COPY
+if vim.loop.os_uname().sysname == "Darwin" then
+  vim.cmd [[ vmap <C-c> "*y ]]
+else
+  vim.cmd [[ vmap <C-c> "+y ]]
+end
+
+------------------------------------------
+-- Custom Functions and Keymaps
+-- Func: C-F by name
+function vim.getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg('v')
+  vim.fn.setreg('v', {})
+
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
+end
+
+keymap('v', '<C-f>', function()
+  local text = vim.getVisualSelection()
+  tb.live_grep({ default_text = text })
+end)
+
+-- Func: Copy Rel Path
+function CopyRelativePath()
+  -- Получаем путь к текущему файлу в буфере
+  local current_file = vim.fn.expand('%')
+  -- Получаем рабочую директорию проекта
+  local project_root = vim.fn.getcwd()
+  -- Определяем относительный путь
+  local relative_path = vim.fn.fnamemodify(current_file, ':.')
+  -- Копируем относительный путь в буфер обмена
+  vim.fn.setreg('+', relative_path)
+  print('Относительный путь скопирован в буфер обмена: ' .. relative_path)
+end
+
+vim.api.nvim_set_keymap('n', '<leader>y', ':lua CopyRelativePath()<CR>', { noremap = true, silent = true })
+
+-- Func: Autofold
+function ToggleFoldMethod()
+  if vim.o.foldmethod == 'indent' then
+    vim.o.foldmethod = 'marker'
+  else
+    vim.o.foldmethod = 'indent'
+  end
+end
+
+keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
+
+------------------------------------------
+--- Plugins
+--- NERDTRee
+keymap({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })
+
 -- Hover Doc
 keymap('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
@@ -106,12 +109,6 @@ vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })
-vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
-keymap('n', 'gf',
-  ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
-  { silent = true }
-)
-keymap('n', 'gt', ':TodoTelescope<CR>', { silent = true })
 vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
 
 -- TELESCOPE
@@ -123,17 +120,22 @@ end
 keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
-keymap('n', '<C-g>g', ':Telescope git_file_history<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
-keymap('n', '<C-t>', ':Telescope diagnostics burfnr=0<CR>')
+keymap('n', '<C-t>', ':TodoTelescope<CR>')
+keymap('n', '<C-d>', ':Telescope diagnostics burfnr=0<CR>')
+
 keymap('n', '<leader>b', ':Telescope vim_bookmarks all<CR>')
+keymap('n', 'gf',
+  ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
+  { silent = true }
+)
 
 -- RENAME
 keymap('n', '<leader>r', ':IncRename')
 
 -- GIT
 keymap('n', '<leader>lg', ':LazyGit <CR>')
-keymap('n', '<leader>gh', ':lua package.loaded.gitsigns.preview_hunk()')
+keymap('n', '<leader>gh', ':lua package.loaded.gitsigns.preview_hunk() <CR>')
 keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>')
 
 -- CodeActions

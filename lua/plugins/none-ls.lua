@@ -37,5 +37,16 @@ return {
         }),
       }
     })
+
+    -- Format code
+    for _, file_pattern in ipairs({ "*.rs", "*.hs", "*.py", "*.lua", "*.md", "*.nix", "*.tf", "*.js" }) do
+      vim.api.nvim_create_autocmd(
+        'BufWritePre',
+        {
+          pattern = file_pattern,
+          callback = function() vim.lsp.buf.format(nil) end
+        }
+      )
+    end
   end,
 }
