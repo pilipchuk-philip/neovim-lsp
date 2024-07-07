@@ -124,7 +124,7 @@ keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR
 keymap('n', '<C-t>', ':TodoTelescope<CR>')
 keymap('n', '<C-d>', ':Telescope diagnostics burfnr=0<CR>')
 
-keymap('n', '<leader>b', ':Telescope vim_bookmarks all<CR>')
+keymap('n', 'gb', ':Telescope vim_bookmarks all<CR>', { silent = true })
 keymap('n', 'gf',
   ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
   { silent = true }
@@ -132,14 +132,12 @@ keymap('n', 'gf',
 
 -- RENAME
 keymap('n', '<leader>r', ':IncRename')
+-- CodeActions
+keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
 
 -- GIT
 keymap('n', '<leader>lg', ':LazyGit <CR>')
-keymap('n', '<leader>gh', ':lua package.loaded.gitsigns.preview_hunk() <CR>')
 keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>')
-
--- CodeActions
-keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
 
 -- Chat
 keymap('n', '<leader>c', ':ChatGPT <CR>')
