@@ -3,10 +3,6 @@ local tb = require('telescope.builtin')
 
 ------------------------------------------
 -- Basics
--- Map Leader
-vim.g.mapleader = ' ' -- Set <space> as the leader key
-vim.g.maplocalleader = ' '
-
 -- See `:help vim.keymap.set()`
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 keymap('n', ';', ':', { silent = true })
