@@ -11,7 +11,7 @@ return {
     { 'lukas-reineke/cmp-under-comparator' },
   },
   config = function()
-    local cmp = require('cmp')         -- autocomple
+    local cmp = require('cmp') -- autocomple
     local lspkind = require('lspkind')
     require('luasnip.loaders.from_vscode').lazy_load()
     require('luasnip').config.setup({})
@@ -75,5 +75,12 @@ return {
         { name = 'spell' },
       },
     })
+    vim.api.nvim_exec2(
+      [[
+          autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+          autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+      ]],
+      false
+    )
   end,
 }
