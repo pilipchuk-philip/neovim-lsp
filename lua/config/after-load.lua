@@ -72,8 +72,8 @@ vim.cmd('highlight Visual cterm=NONE ctermbg=White ctermfg=Black guibg=White gui
 
 -- Highlight on yank
 vim.cmd [[augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup END]]
 
 -- Help always right
@@ -106,3 +106,4 @@ vim.fn.sign_define("DiagnosticSignInfo",
   { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint",
   { text = "󰌵", texthl = "DiagnosticSignHint" })
+

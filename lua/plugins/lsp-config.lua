@@ -30,11 +30,13 @@ return {
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     -- Ensure the servers above are installed
+    local lspconfig = require 'lspconfig'
     local mason_lspconfig = require 'mason-lspconfig'
 
     mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(servers),
     }
+
 
     mason_lspconfig.setup_handlers {
       function(server_name)
@@ -46,7 +48,6 @@ return {
         }
       end,
     }
-    local lspconfig = require 'lspconfig'
 
     -- overwrite pyright default settings
     --[[ lspconfig.pyright.setup({
@@ -64,7 +65,14 @@ return {
         },
       },
     }) ]]
-    lspconfig.jedi_language_server.setup({})
+    lspconfig.jedi_language_server.setup({
+      diagnostics = {
+        enable= true,
+        didOpen= true,
+        didChange= true,
+        didSave= true,
+      },
+    })
     -- Signature
     require "lsp_signature".setup({
       hint_prefix = "", -- Fix disable pictogram
