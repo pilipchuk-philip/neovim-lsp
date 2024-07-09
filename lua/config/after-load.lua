@@ -90,13 +90,14 @@ vim.api.nvim_create_autocmd('BufEnter', {
 })
 
 -- Diagnostic Config and Icons
-vim.diagnostic.config({
+-- FIXME:
+--[[ vim.diagnostic.config({
   virtual_text = true,
   signs = true,
   underline = true,
   update_in_insert = false,
   severity_sort = false
-})
+}) ]]
 
 vim.fn.sign_define("DiagnosticSignError",
   { text = " ", texthl = "DiagnosticSignError" })
@@ -106,4 +107,3 @@ vim.fn.sign_define("DiagnosticSignInfo",
   { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint",
   { text = "󰌵", texthl = "DiagnosticSignHint" })
-

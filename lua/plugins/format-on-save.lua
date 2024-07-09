@@ -25,27 +25,34 @@ return {
         typescript = formatters.prettierd,
         typescriptreact = formatters.prettierd,
         yaml = formatters.lsp,
+        javascript = formatters.lsp,
+        text = formatters.remove_trailing_whitespace,
+
+        -- TODO:
+        -- https://github.com/elentok/format-on-save.nvim
 
         -- Add your own shell formatters:
-        -- TODO: что это?
-        myfiletype = formatters.shell({ cmd = { "myformatter", "%" } }),
+        -- TODO: Пример как можно создать свой язык и далее формативание
+        -- myfiletype = formatters.shell({ cmd = { "myformatter", "%" } }),
 
         -- Add lazy formatter that will only run when formatting:
-        my_custom_formatter = function()
-          -- TODO: что это?
+        -- TODO: вот в место этой функции написать для проекта ruff
+        --[[ my_custom_formatter = function()
           if vim.api.nvim_buf_get_name(0):match("/README.md$") then
             return formatters.prettierd
           else
             return formatters.lsp({})
           end
-        end,
+        end, ]]
 
         -- Concatenate formatters
         python = {
+          -- TODO: HERE NEEDS TO BE SETTING
+          formatters.lsp,
           formatters.remove_trailing_whitespace,
           -- formatters.shell({ cmd = { "tidy-imports" } }),
           -- formatters.black,
-          formatters.ruff,
+          -- formatters.ruff,
         },
 
         -- Use a tempfile instead of stdin
@@ -59,9 +66,6 @@ return {
           formatters.shell({ cmd = { "gofmt" } }),
         },
 
-        javascript = {
-
-        }
       },
 
       -- Optional: fallback formatter to use when no formatters match the current filetype

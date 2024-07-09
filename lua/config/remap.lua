@@ -130,11 +130,12 @@ keymap('n', 'gf',
 keymap('n', '<leader>r', ':IncRename')
 -- CodeActions
 keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
+keymap('v', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
 
 -- GIT
 keymap('n', '<leader>lg', ':LazyGit <CR>')
 keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>')
 
 -- Chat
-keymap('n', '<leader>c', ':ChatGPT <CR>')
-keymap('v', '<leader>c', ':ChatGPTEditWithInstructions <CR>')
+keymap('n', '<leader>g', ':ChatGPT <CR>')
+keymap('v', '<leader>g', ':ChatGPTEditWithInstructions <CR>')

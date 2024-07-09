@@ -66,13 +66,10 @@ return {
       },
     }) ]]
     lspconfig.jedi_language_server.setup({
-      diagnostics = {
-        enable= true,
-        didOpen= true,
-        didChange= true,
-        didSave= true,
-      },
+      filetypes = { "python" },
+      single_file_support = true,
     })
+
     -- Signature
     require "lsp_signature".setup({
       hint_prefix = "", -- Fix disable pictogram
