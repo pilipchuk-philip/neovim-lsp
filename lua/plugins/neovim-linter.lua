@@ -1,10 +1,19 @@
 return {
   "mfussenegger/nvim-lint",
   config = function()
+    local env = os.getenv("MY_ENV")
+
     require('lint').linters_by_ft = {
       markdown = { 'vale', },
       python = { 'mypy', 'ruff', }, -- NOTE: Нужно устанавливать через Mason
     }
+    if env == "WORK" then
+      local ruff = require('lint').linters.ruff
+      ruff.args = {
+        "--configure",
+        "/home/ppy/work/unixy/python/pyproject.toml"
+      }
+    end
 
     -- Фунцция помощник :ShowDiagnostics - выводит имя диагностики и ощибку
     function _G.show_diagnostics()

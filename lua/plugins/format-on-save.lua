@@ -10,6 +10,7 @@ return {
       python_formatters = {
         formatters.remove_trailing_whitespace,
         -- NOTE: "-" этот символ не даёт перезаписывать этот файл, иначе в файл попадает результат
+        -- FIXME: похоже что-то не работает с импортами
         formatters.shell({ cmd = { "ruff", "format", "--config", "/home/ppy/work/unixy/python/pyproject.toml", "-" } })
       }
       print("work")
