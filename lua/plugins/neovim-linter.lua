@@ -3,7 +3,7 @@ return {
   config = function()
     require('lint').linters_by_ft = {
       markdown = { 'vale', },
-      python = { 'mypy', 'ruff', 'pylint', 'flake8' }, -- NOTE: Нужно устанавливать через Mason
+      python = { 'mypy', 'ruff', }, -- NOTE: Нужно устанавливать через Mason
     }
 
     -- Фунцция помощник :ShowDiagnostics - выводит имя диагностики и ощибку
