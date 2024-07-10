@@ -3,7 +3,23 @@ return {
   config = function()
     local format_on_save = require("format-on-save")
     local formatters = require("format-on-save.formatters")
+    local env = os.getenv("MY_ENV")
+    local python_formatters
 
+    if env == "WORK" then
+      python_formatters = {
+        formatters.remove_trailing_whitespace,
+        -- NOTE: "-" этот символ не даёт перезаписывать этот файл, иначе в файл попадает результат
+        formatters.shell({ cmd = { "ruff", "format", "--config", "/home/ppy/work/unixy/python/pyproject.toml", "-" } })
+      }
+      print("work")
+    else
+      python_formatters = {
+        formatters.lsp,
+        formatters.remove_trailing_whitespace,
+      }
+      print("any dev")
+    end
     format_on_save.setup({
       exclude_path_patterns = {
         "/node_modules/",
@@ -26,34 +42,9 @@ return {
         typescriptreact = formatters.prettierd,
         yaml = formatters.lsp,
         javascript = formatters.lsp,
+        sql = {},
         text = formatters.remove_trailing_whitespace,
-
-        -- TODO:
-        -- https://github.com/elentok/format-on-save.nvim
-
-        -- Add your own shell formatters:
-        -- TODO: Пример как можно создать свой язык и далее формативание
-        -- myfiletype = formatters.shell({ cmd = { "myformatter", "%" } }),
-
-        -- Add lazy formatter that will only run when formatting:
-        -- TODO: вот в место этой функции написать для проекта ruff
-        --[[ my_custom_formatter = function()
-          if vim.api.nvim_buf_get_name(0):match("/README.md$") then
-            return formatters.prettierd
-          else
-            return formatters.lsp({})
-          end
-        end, ]]
-
-        -- Concatenate formatters
-        python = {
-          -- TODO: HERE NEEDS TO BE SETTING
-          formatters.lsp,
-          formatters.remove_trailing_whitespace,
-          -- formatters.shell({ cmd = { "tidy-imports" } }),
-          -- formatters.black,
-          -- formatters.ruff,
-        },
+        python = python_formatters,
 
         -- Use a tempfile instead of stdin
         go = {
@@ -71,10 +62,11 @@ return {
       -- Optional: fallback formatter to use when no formatters match the current filetype
       fallback_formatter = {
         formatters.remove_trailing_whitespace,
-        formatters.remove_trailing_newlines,
-        formatters.prettierd,
+        -- formatters.remove_trailing_newlines,
+        -- formatters.prettierd,
       },
 
+      -- NOTE:
       -- By default, all shell commands are prefixed with "sh -c" (see PR #3)
       -- To prevent that set `run_with_sh` to `false`.
       run_with_sh = false,
