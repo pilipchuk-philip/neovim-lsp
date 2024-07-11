@@ -119,6 +119,7 @@ keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
 keymap('n', '<C-t>', ':TodoTelescope<CR>')
 keymap('n', '<C-d>', ':Telescope diagnostics burfnr=0<CR>')
+keymap('n', '<C-n>', ':Telescope neoclip<CR>')
 
 keymap('n', 'gb', ':Telescope vim_bookmarks all<CR>', { silent = true })
 keymap('n', 'gf',
