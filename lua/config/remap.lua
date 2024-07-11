@@ -113,7 +113,7 @@ if vim.loop.os_uname().sysname == "Darwin" then
 else
   keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fdfind,--type,f,--exclude,.git<CR>')
 end
-keymap('n', '<C-f>', ':Telescope live_grep<CR>')
+keymap('n', '<C-f>', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
