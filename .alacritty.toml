@@ -1,19 +1,19 @@
 [font]
-size = 15.0
-offset.x = 1
-offset.y = 3
+size = 14
+offset.x = 0
+offset.y = 0
+glyph_offset.x = 0
+glyph_offset.y = 0
+builtin_box_drawing = true
 
 [font.normal]
-# family = "MesloLGS NF"
-# family = "Hack Nerd Font Propo"
-family = "MesloLGSDZ Nerd Font Propo"
-
+family = "MesloLGS Nerd Font Propo"
 
 [window]
-# startup_mode = "Windowed"
-startup_mode = "Fullscreen"
+startup_mode = "Windowed"
 dynamic_padding = true
-opacity = 0.97
+# startup_mode = "Fullscreen"
+# opacity = 0.97
 
 [window.padding]
 x = 6
