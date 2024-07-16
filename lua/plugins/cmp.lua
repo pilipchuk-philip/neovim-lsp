@@ -1,21 +1,27 @@
 return {
   'hrsh7th/nvim-cmp', -- Autocompletion
   dependencies = {
-    { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-cmdline' },
     { 'onsails/lspkind-nvim' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-path' },
-    { 'rafamadriz/friendly-snippets' },
+    { 'dcampos/cmp-snippy' },
     { 'lukas-reineke/cmp-under-comparator' },
   },
   config = function()
     local cmp = require('cmp') -- autocomple
     local lspkind = require('lspkind')
-    require('luasnip.loaders.from_vscode').lazy_load()
-    require('luasnip').config.setup({})
+
+    --snippets
+    require('snippy').setup({})
+
     cmp.setup({
+      snippet = {
+        expand = function(args)
+          require 'snippy'.expand_snippet(args.body)
+        end
+      },
       window = {
         completion = { -- rounded border; thin-style scrollbar
           border = 'rounded',
@@ -73,6 +79,7 @@ return {
         { name = 'path' },
         { name = 'buffer' },
         { name = 'spell' },
+        { name = 'snippy' },
       },
     })
     vim.cmd [[
