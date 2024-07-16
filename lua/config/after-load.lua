@@ -89,6 +89,28 @@ vim.api.nvim_create_autocmd('BufEnter', {
   group = 'HelpOnRight',
 })
 
+-- Tabs
+-- Функция для установки заголовка вкладки как имя файла
+function Tabline()
+  local s = ''
+  for i = 1, vim.fn.tabpagenr('$') do
+    -- Переключить на вкладку i
+    local winnr = vim.fn.tabpagewinnr(i)
+    local bufnr = vim.fn.tabpagebuflist(i)[winnr]
+    local filename = vim.fn.bufname(bufnr)
+    filename = vim.fn.fnamemodify(filename, ':t')     -- Получить только имя файла
+    if i == vim.fn.tabpagenr() then
+      s = s .. '%' .. i .. 'T' .. '%#TabLineSel#' .. filename .. ' %#TabLine#'
+    else
+      s = s .. '%' .. i .. 'T' .. filename .. ' '
+    end
+  end
+  s = s .. '%#TabLineFill#%T'
+  return s
+end
+
+-- Установить Tabline
+vim.o.tabline = '%!v:lua.Tabline()'
 -- Diagnostic Config and Icons
 -- FIXME:
 --[[ vim.diagnostic.config({
