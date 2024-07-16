@@ -11,6 +11,11 @@ keymap('n', ';', ':', { silent = true })
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Tabs
+keymap('n', 'te', ':tabedit<CR>', { silent = true })
+keymap('n', '<tab>', ':tabnext<CR>', { silent = true })
+
+
 -- Tabs, Splits
 keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
 keymap('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
@@ -94,6 +99,10 @@ keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
 
 ------------------------------------------
 --- Plugins
+-- CodeActions
+keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
+keymap('v', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
+
 --- NERDTRee
 keymap({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })
 
@@ -101,13 +110,18 @@ keymap({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })
 keymap('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 
--- LSP
+-- LSP GOTO
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })
-vim.keymap.set({ 'v', 'n' }, 'ga', require('actions-preview').code_actions)
+keymap('n', 'gb', ':Telescope vim_bookmarks all<CR>', { silent = true })
+keymap('n', 'gf',
+  ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
+  { silent = true }
+)
 
--- TELESCOPE
+-- Windows and actions
+-- Search
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-p>', ':Telescope find_files hidden=true find_command=fd,--type,f,--exclude,.git<CR>')
 else
@@ -115,33 +129,22 @@ else
 end
 keymap('n', '<C-a>', 'gg<S-v>G')
 keymap('n', '<C-f>', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
+
+-- Windows
+local function diagnostics_in_current_buffer()
+  require("telescope.builtin").diagnostics({ bufnr = 0 })
+end
 keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
 keymap('n', '<C-t>', ':TodoTelescope<CR>')
-keymap('n', '<C-d>', ':Telescope diagnostics burfnr=0<CR>')
+keymap('n', '<C-d>', diagnostics_in_current_buffer)
 keymap('n', '<C-n>', ':Telescope neoclip<CR>')
-
-keymap('n', 'gb', ':Telescope vim_bookmarks all<CR>', { silent = true })
-keymap('n', 'gf',
-  ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>',
-  { silent = true }
-)
-
--- Tabs
-keymap('n', 'te', ':tabedit<CR>', { silent = true })
-keymap('n', '<tab>', ':tabnext<CR>', { silent = true })
-
 -- RENAME
-keymap('n', '<leader>r', ':IncRename')
--- CodeActions
-keymap('n', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
-keymap('v', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
-
--- GIT
+--[[ keymap('n', '<C-r>', ':IncRename')
+-- GIT ]]
 keymap('n', '<leader>lg', ':LazyGit <CR>')
 keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>')
-
 -- Chat
 keymap('n', '<leader>g', ':ChatGPT <CR>')
 keymap('v', '<leader>g', ':ChatGPTEditWithInstructions <CR>')
