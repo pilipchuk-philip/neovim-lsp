@@ -1,14 +1,11 @@
 return {
-  'm3xshen/autoclose.nvim',
-  options = {
-    disabled_filetypes = { "text", "markdown" },
-  },
+  "windwp/nvim-autopairs",
   config = function()
-    require("autoclose").setup({
-      options = {
-        disable_when_touch = true, -- Отключает автозакрытие, когда курсор касается символа
-        touch_regex = "[%w\"%)]"   -- Регулярное выражение для символов, которые отключают автозакрытие
-      }
+    require("nvim-autopairs").setup({
+      disable_filetype = { "TelescopePrompt", "spectre_panel" },
     })
+    local cmp = require("cmp")
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
   end,
 }
