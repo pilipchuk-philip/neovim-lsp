@@ -1,3 +1,4 @@
+--NOTE: Если появится ошибка с E117: Unknown function '_wilder*', то ':UpdateRemotePlugins'
 return {
   'gelguy/wilder.nvim',
   config = function()
