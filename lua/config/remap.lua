@@ -3,20 +3,17 @@ local tb = require('telescope.builtin')
 
 ------------------------------------------
 -- Basics
--- See `:help vim.keymap.set()`
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-keymap('n', ';', ':', { silent = true })
+-- keymap('n', ';', ':', { silent = true })
 
 -- Remap for dealing with word wrap
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Tabs
+-- Tabs, Splits
 keymap('n', 'te', ':tabedit<CR>', { silent = true })
 keymap('n', '<tab>', ':tabnext<CR>', { silent = true })
 
-
--- Tabs, Splits
 keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
 keymap('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
 
@@ -30,13 +27,15 @@ keymap('n', 'sl', '<C-w>l', { silent = true })
 keymap('n', 'sk', '<C-w>k', { silent = true })
 keymap('n', 'sj', '<C-w>j', { silent = true })
 
--- Comments
+-- Comments and copy
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-/>', '<Plug>kommentary_line_default <CR>')
   keymap('v', '<C-/>', '<Plug>kommentary_visual_default <CR>')
+  vim.cmd [[ vmap <C-c> "*y ]]
 else
   keymap('n', '<C-_>', '<Plug>kommentary_line_default<CR>')
   keymap('v', '<C-_>', '<Plug>kommentary_visual_default<CR>')
+  vim.cmd [[ vmap <C-c> "+y ]]
 end
 if vim.env.TMUX then
   keymap('n', '', '<Plug>kommentary_line_default<CR>')
@@ -44,11 +43,11 @@ if vim.env.TMUX then
 end
 
 -- COPY
-if vim.loop.os_uname().sysname == "Darwin" then
-  vim.cmd [[ vmap <C-c> "*y ]]
-else
-  vim.cmd [[ vmap <C-c> "+y ]]
-end
+--if vim.loop.os_uname().sysname == "Darwin" then
+--  vim.cmd [[ vmap <C-c> "*y ]]
+--else
+--  vim.cmd [[ vmap <C-c> "+y ]]
+--end
 
 ------------------------------------------
 -- Custom Functions and Keymaps
@@ -107,7 +106,7 @@ keymap('v', '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')
 keymap({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })
 
 -- Hover Doc
-keymap('n', 'K', vim.lsp.buf.hover)
+-- keymap('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 
 -- LSP GOTO
