@@ -98,7 +98,7 @@ function Tabline()
     local winnr = vim.fn.tabpagewinnr(i)
     local bufnr = vim.fn.tabpagebuflist(i)[winnr]
     local filename = vim.fn.bufname(bufnr)
-    filename = vim.fn.fnamemodify(filename, ':t')     -- Получить только имя файла
+    filename = vim.fn.fnamemodify(filename, ':t') -- Получить только имя файла
     if i == vim.fn.tabpagenr() then
       s = s .. '%' .. i .. 'T' .. '%#TabLineSel#' .. filename .. ' %#TabLine#'
     else
@@ -111,21 +111,3 @@ end
 
 -- Установить Tabline
 vim.o.tabline = '%!v:lua.Tabline()'
--- Diagnostic Config and Icons
--- FIXME:
---[[ vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = false
-}) ]]
-
-vim.fn.sign_define("DiagnosticSignError",
-  { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn",
-  { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo",
-  { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint",
-  { text = "󰌵", texthl = "DiagnosticSignHint" })

@@ -10,8 +10,8 @@ return {
       python_formatters = {
         formatters.remove_trailing_whitespace,
         -- NOTE: "-" этот символ не даёт перезаписывать этот файл, иначе в файл попадает результат
-        -- FIXME: похоже что-то не работает с импортами
         formatters.shell({ cmd = { "ruff", "format", "--config", "/home/ppy/work/unixy/python/pyproject.toml", "-" } })
+        -- TODO: можно настроить isort
       }
       print("work")
     else
@@ -67,7 +67,6 @@ return {
         -- formatters.prettierd,
       },
 
-      -- NOTE:
       -- By default, all shell commands are prefixed with "sh -c" (see PR #3)
       -- To prevent that set `run_with_sh` to `false`.
       run_with_sh = false,
