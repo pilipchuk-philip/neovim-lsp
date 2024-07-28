@@ -6,7 +6,7 @@ return {
     'nvim-telescope/telescope-live-grep-args.nvim',
     'tom-anders/telescope-vim-bookmarks.nvim',
     'AckslD/nvim-neoclip.lua',
-    'isak102/telescope-git-file-history.nvim',
+    -- 'isak102/telescope-git-file-history.nvim',
     'kkharji/sqlite.lua',
     'tpope/vim-fugitive',
     {
