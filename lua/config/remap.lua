@@ -67,7 +67,7 @@ keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Tabs, Splits
 keymap('n', 'te', ':tabedit<CR>', { silent = true })
-keymap('n', '<tab>', ':tabnext<CR>', { silent = true })
+keymap('n', '<tab>', ':bp<CR>', { silent = true })
 
 keymap('n', 'ss', ':split<Return><C-w>w', { silent = true })
 keymap('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
