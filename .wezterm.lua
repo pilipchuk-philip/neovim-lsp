@@ -22,5 +22,12 @@ config.window_padding               = {
     bottom = 0,
 }
 
+config.keys                         = {
+    {
+        key = 'n',
+        mods = 'SHIFT|CTRL',
+        action = wezterm.action.ToggleFullScreen,
+    },
+}
 -- and finally, return the configuration to wezterm
 return config

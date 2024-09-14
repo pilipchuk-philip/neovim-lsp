@@ -102,6 +102,7 @@ end
 -- LSP (from code)
 keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })                       -- LSP defenition
 keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { silent = true })                        -- LSP declaration
+keymap('n', 'gs', ':vsplit | lua vim.lsp.buf.definition()<CR>', { silent = true })               -- Открыть сплит справа и перейти к определению
 keymap('n', 'gr', ':lua require("telescope.builtin").lsp_references()<CR>', { silent = true })   -- LSP references
 vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })                        -- Hover Doc
 -- File Search
