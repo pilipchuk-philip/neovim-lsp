@@ -43,9 +43,9 @@ return {
         typescriptreact = formatters.prettierd,
         yaml = formatters.lsp,
         javascript = formatters.lsp,
-        sql = {},
+        sql = {},                   -- NOTE: так можно не форматировать вообще ничего
         text = formatters.remove_trailing_whitespace,
-        python = python_formatters,
+        python = python_formatters, -- NOTE: так можно их переопределить
 
         -- Use a tempfile instead of stdin
         go = {
