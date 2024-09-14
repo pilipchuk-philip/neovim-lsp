@@ -39,6 +39,20 @@ end
 
 keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
 
+-- Func: Toggle explorer
+function ToggleExplorer()
+  local buf_name = vim.api.nvim_buf_get_name(0)
+  local is_netrw = vim.bo.filetype == 'netrw'
+  if is_netrw then
+    vim.cmd('silent! bwipeout') -- Закрыть буфер Netrw
+  else
+    vim.cmd('Explore')
+  end
+end
+
+keymap({ 'n', 'v' }, '<BS>', ':lua ToggleExplorer()<CR>', { silent = true })
+
+
 ------------------------------------------
 -- Basics
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -94,7 +108,8 @@ vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })       
 keymap('n', '<C-f>', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>') -- Search
 --- Apps
 keymap({ 'n', 'v' }, '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')         -- code actions
-keymap({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })                           -- NERDTRee
+
+
 -- Windows
 local function diagnostics_in_current_buffer()
   require("telescope.builtin").diagnostics({ bufnr = 0 })
