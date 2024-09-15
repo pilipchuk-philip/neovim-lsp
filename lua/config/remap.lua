@@ -41,12 +41,14 @@ keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
 
 -- Func: Toggle explorer
 function ToggleExplorer()
-  local buf_name = vim.api.nvim_buf_get_name(0)
-  local is_netrw = vim.bo.filetype == 'netrw'
-  if is_netrw then
-    vim.cmd('silent! bwipeout') -- Закрыть буфер Netrw
+  local is_oil = vim.bo.filetype == 'oil' -- Проверяем, открыт ли Oil
+
+  if is_oil then
+    -- Если открыт Oil, закрываем его
+    require('oil').close()
   else
-    vim.cmd('Explore')
+    -- Иначе открываем Oil
+    require('oil').open()
   end
 end
 
