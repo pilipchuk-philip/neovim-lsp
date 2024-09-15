@@ -5,11 +5,6 @@ General
  - Check OIL.NVIM
  - Check Mini.Files
 
- - CHeck EX
-    -- IF ex neds updated
-    -- интерсно можно ли как-то добавть в netrw возможность neреименовать hl
-    --
-
 * Trouble ??
 
 * Linting - works very wierd
