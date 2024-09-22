@@ -1,0 +1,18 @@
+{
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    "security.workspace.trust.untrustedFiles": "open",
+    "telemetry.telemetryLevel": "off",
+    "editor.fontFamily": "\"JetBrainsMono Nerd Font\", Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "\"JetBrainsMono Nerd Font\", Menlo, Monaco, 'Courier New', monospace",
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "GitHub Dark",
+    "workbench.iconTheme": "icons",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnPaste": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.lineNumbers": "relative"
+}
