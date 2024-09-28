@@ -42,8 +42,8 @@ alias sql="cd ~/Code/SQL/"
 # ----- JS ---------------------- #
 alias js="cd ~/Code/JavaScript/javascript_ru/"
 
-alias s='sesh list -i | gum filter --limit 1 --placeholder "Pick a sesh" --height 50 --prompt="⚡"'
-alias z="zoxide"
+# ----- new cat
+alias cat="ccat --bg=dark"
 
 #*********************************#
 # ------------------------------- #
