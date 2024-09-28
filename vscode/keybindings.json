@@ -27,6 +27,22 @@
         "command": "workbench.action.previousEditorInGroup",
         "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
     },
+    // Open Files
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.quickOpen"
+        // "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen"
+        // "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "filesExplorer.findInFolder",
+        "when": "filesExplorerFocus"
+    },
     // Recent Files
     {
         "key": "cmd+e",
@@ -53,11 +69,6 @@
             ]
         },
         "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && !sideBarFocus"
-    },
-    {
-        "key": "backspace",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "sideBarFocus"
     },
     // Code
     {

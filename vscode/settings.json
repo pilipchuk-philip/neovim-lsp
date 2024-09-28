@@ -14,5 +14,6 @@
     "files.trimTrailingWhitespace": true,
     "editor.formatOnPaste": true,
     "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.activityBar.location": "top",
     "editor.lineNumbers": "relative"
 }
