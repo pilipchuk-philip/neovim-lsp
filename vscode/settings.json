@@ -1,19 +1,92 @@
 {
     "editor.fontSize": 15,
     "terminal.integrated.fontSize": 15,
-    "security.workspace.trust.untrustedFiles": "open",
     "telemetry.telemetryLevel": "off",
-    "editor.fontFamily": "\"JetBrainsMono Nerd Font\", Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    "terminal.integrated.fontFamily": "\"JetBrainsMono Nerd Font\", Menlo, Monaco, 'Courier New', monospace",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.wordWrap": "off",
+    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font, Regual",
+    "editor.fontFamily": "JetbrainsMono Nerd Font, Regual",
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "GitHub Dark",
-    "workbench.iconTheme": "icons",
+    "editor.unicodeHighlight.nonBasicASCII": false,
     "editor.scrollbar.horizontal": "hidden",
     "editor.scrollbar.vertical": "hidden",
+    "editor.lineNumbers": "relative",
+    "workbench.tree.indent": 10,
+    "workbench.editor.pinnedTabSizing": "compact",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "window.density.editorTabHeight": "default",
+    "editor.fontLigatures": true,
+    "workbench.tree.renderIndentGuides": "always",
+    "debug.toolBarLocation": "commandCenter",
     "files.trimTrailingWhitespace": true,
     "editor.formatOnPaste": true,
-    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.colorTheme": "GitHub Dark",
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.gpuAcceleration": "off",
     "workbench.activityBar.location": "top",
-    "editor.lineNumbers": "relative"
+    "window.customTitleBarVisibility": "auto",
+    "yaml.schemas": {
+        "file:///home/ppy/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "window.titleBarStyle": "custom",
+    "workbench.iconTheme": "vscode-icons",
+    "vs-kubernetes": {
+        "vscode-kubernetes.helm-path-linux": "/home/ppy/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vscode-kubernetes.kubectl-path-linux": "/home/ppy/.local/state/vs-kubernetes/tools/kubectl/kubectl",
+        "vscode-kubernetes.minikube-path-linux": "/home/ppy/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+    "python.defaultInterpreterPath": "/home/ppy/anaconda3/envs/unixy",
+    // VIM
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "m",
+                "m"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                "s",
+                "v"
+            ],
+            "commands": [
+                "workbench.action.splitEditor"
+            ]
+        },
+        {
+            "before": [
+                "s",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.splitEditorUp"
+            ]
+        }
+        // {
+        //     "before": [
+        //         "g",
+        //         "r"
+        //     ],
+        //     "command": "editor.action.goToReferences",
+        // },
+        // {
+        //     "before": [
+        //         "g",
+        //         "s",
+        //     ],
+        //     "command": "runCommands",
+        //     "args": {
+        //         "commands": [
+        //             "workbench.action.splitEditorRight",
+        //             "editor.action.revealDefinition"
+        //         ]
+        //     },
+        //     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual')"
+        // }
+    ]
 }
