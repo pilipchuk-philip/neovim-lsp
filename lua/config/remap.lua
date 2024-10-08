@@ -56,6 +56,7 @@ vim.keymap.set({ 'n', 'v' }, '<BS>', ':lua ToggleExplorer()<CR>', { silent = tru
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 keymap('n', ';', ':', { silent = true })
 
+
 -- Select all file
 keymap('n', '<C-a>', 'gg<S-v>G')
 
@@ -80,6 +81,8 @@ keymap('n', 'sl', '<C-w>l', { silent = true })
 keymap('n', 'sk', '<C-w>k', { silent = true })
 keymap('n', 'sj', '<C-w>j', { silent = true })
 
+-- Close tabs
+keymap('n', '<C-w>', ':bd<CR>', { silent = true })
 -- Comments, copy and simple file search
 if vim.loop.os_uname().sysname == "Darwin" then
   keymap('n', '<C-/>', '<Plug>kommentary_line_default <CR>')
