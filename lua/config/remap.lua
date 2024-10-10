@@ -40,7 +40,7 @@ end
 keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
 
 -- Func: Toggle explorer
-function ToggleExplorer()
+--[[ function ToggleExplorer()
   local neotree = require('neo-tree')
   local win_id = vim.fn.bufwinid('neo-tree filesystem [1]')
   if win_id ~= -1 then
@@ -48,9 +48,9 @@ function ToggleExplorer()
   else
     require('neo-tree.command').execute({ action = "show", source = "filesystem", position = "left" })
   end
-end
+end ]]
 
-vim.keymap.set({ 'n', 'v' }, '<BS>', ':lua ToggleExplorer()<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<BS>', ':NERDTreeToggle<CR>', { silent = true })
 ------------------------------------------
 -- Basics
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
