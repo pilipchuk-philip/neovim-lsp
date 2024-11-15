@@ -1,21 +1,12 @@
 ------------------------
-General
+|-> Linting
 ------------------------
-* Files works not great
- - Check OIL.NVIM
- - Check Mini.Files
-
-* Trouble ??
-
 * Linting - works very wierd
+    ** Probably lint should have 3 sources for python
+      - LSP
+      - RUFF
+      - MyPy
 
-*
-
-
-
-
--------------------------
-Specific
-------------------------
-Python mypy
+* Autoformat
+ - возможно всё же попробовать neotree и разобраться с поиском
 

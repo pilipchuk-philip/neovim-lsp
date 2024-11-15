@@ -21,6 +21,7 @@ return {
       }
       print("any dev")
     end
+
     format_on_save.setup({
       exclude_path_patterns = {
         "/node_modules/",

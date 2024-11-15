@@ -1,6 +1,28 @@
+// {
+//     "before": [
+//         "g",
+//         "r"
+//     ],
+//     "command": "editor.action.goToReferences",
+// },
+// {
+//     "before": [
+//         "g",
+//         "s",
+//     ],
+//     "command": "runCommands",
+//     "args": {
+//         "commands": [
+//             "workbench.action.splitEditorRight",
+//             "editor.action.revealDefinition"
+//         ]
+//     },
+//     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual')"
+// }
 {
-    "editor.fontSize": 15,
-    "terminal.integrated.fontSize": 15,
+    "search.searchEditor.defaultNumberOfContextLines": 3,
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
     "telemetry.telemetryLevel": "off",
     "security.workspace.trust.untrustedFiles": "open",
     "editor.wordWrap": "off",
@@ -13,7 +35,6 @@
     "editor.scrollbar.vertical": "hidden",
     "editor.lineNumbers": "relative",
     "workbench.tree.indent": 10,
-    "workbench.editor.pinnedTabSizing": "compact",
     "editor.cursorSmoothCaretAnimation": "on",
     "window.density.editorTabHeight": "default",
     "editor.fontLigatures": true,
@@ -21,14 +42,11 @@
     "debug.toolBarLocation": "commandCenter",
     "files.trimTrailingWhitespace": true,
     "editor.formatOnPaste": true,
-    "workbench.colorTheme": "GitHub Dark",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
     "explorer.confirmDragAndDrop": false,
     "terminal.integrated.gpuAcceleration": "off",
     "workbench.activityBar.location": "top",
     "window.customTitleBarVisibility": "auto",
-    "yaml.schemas": {
-        "file:///home/ppy/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-    },
     "window.titleBarStyle": "custom",
     "workbench.iconTheme": "vscode-icons",
     "vs-kubernetes": {
@@ -67,26 +85,20 @@
                 "workbench.action.splitEditorUp"
             ]
         }
-        // {
-        //     "before": [
-        //         "g",
-        //         "r"
-        //     ],
-        //     "command": "editor.action.goToReferences",
-        // },
-        // {
-        //     "before": [
-        //         "g",
-        //         "s",
-        //     ],
-        //     "command": "runCommands",
-        //     "args": {
-        //         "commands": [
-        //             "workbench.action.splitEditorRight",
-        //             "editor.action.revealDefinition"
-        //         ]
-        //     },
-        //     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual')"
-        // }
-    ]
+    ],
+    "terminal.integrated.profiles.osx": {
+        "tmux-shell": {
+            "path": "tmux",
+            "args": [
+                "new-session",
+                "-A",
+                "-s",
+                "vscode:${workspaceFolder}"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "tmux-shell",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.pinnedTabSizing": "compact"
 }
