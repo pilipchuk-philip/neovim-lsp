@@ -50,7 +50,21 @@ return {
     }
 
     -- overwrite pyright default settings
-    lspconfig.pyright.setup({
+    lspconfig.basedpyright.setup({
+      cmd = { 'basedpyright-langserver', '--stdio' },
+      filetypes = { 'python' },
+      single_file_support = true,
+      settings = {
+        basedpyright = {
+          analysis = {
+            autoSearchPaths = false,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = 'openFilesOnly',
+          },
+        },
+      },
+    })
+    --[[ lspconfig.pyright.setup({
       on_attach = on_attach,
       settings = {
         pyright = {

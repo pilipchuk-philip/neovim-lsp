@@ -89,7 +89,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
   group = 'HelpOnRight',
 })
 
--- Tabs
+-- TODO: Возможно стоит это удалить, особо смысла в нём
+--
+--[[ -- Tabs
 -- Функция для установки заголовка вкладки как имя файла
 function Tabline()
   local s = ''
@@ -111,3 +113,4 @@ end
 
 -- Установить Tabline
 vim.o.tabline = '%!v:lua.Tabline()'
+ ]]
