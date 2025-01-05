@@ -21,6 +21,30 @@ return {
       indent = { enable = true },
     })
 
+    -- Выделение класов и методов
+    require 'nvim-treesitter.configs'.setup {
+      textobjects = {
+        select = {
+          enable = true,
+          -- Automatically jump forward to textobj, similar to targets.vim
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+            ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+          },
+          selection_modes = {
+            ['@parameter.outer'] = 'v', -- charwise
+            ['@function.outer'] = 'V',  -- linewise
+            ['@class.outer'] = '<c-v>', -- blockwise
+          },
+          include_surrounding_whitespace = true,
+        },
+      },
+    }
+
     require 'treesitter-context'.setup {
       enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
       max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
