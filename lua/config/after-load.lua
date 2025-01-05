@@ -89,6 +89,10 @@ vim.api.nvim_create_autocmd('BufEnter', {
   group = 'HelpOnRight',
 })
 
+-- Убрать начальное сообщение
+vim.opt.shortmess:append("I")
+
+
 -- TODO: Возможно стоит это удалить, особо смысла в нём
 --
 --[[ -- Tabs
