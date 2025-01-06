@@ -1,24 +1,31 @@
 return {
-  -- FIXME: Проблема с совместимостью плагинов (TmuxNavigator)
-  -- что-то не так с этим плагином, он переопределяет буфер в результате чего не работает переключение по табам
-  -- (:autocmd FileType ipynb) что-то подобное похож
   {
-    'goerz/jupytext.nvim',
-    version = '0.2.0',
-    opts = {}, -- see Options
+    "hkupty/iron.nvim", -- repl provider
+    config = function()
+      local iron = require("iron.core")
+      local view = require("iron.view")
+      iron.setup({
+        config = {
+          -- Whether a repl should be discarded or not
+          scratch_repl = true,
+          -- How the repl window will be displayed
+          -- See below for more information
+          repl_open_cmd = view.split("30%"),
+        },
+      })
+    end,
   },
   {
     "GCBallesteros/NotebookNavigator.nvim",
     keys = {
       { "]h",        function() require("notebook-navigator").move_cell "d" end },
       { "[h",        function() require("notebook-navigator").move_cell "u" end },
-      { "<leader>X", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
-      { "<leader>x", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
+      { "<leader>X", function() require('notebook-navigator').run_cell() end },
+      { "<leader>x", function() require('notebook-navigator').run_and_move() end },
     },
     dependencies = {
       "echasnovski/mini.comment",
-      "hkupty/iron.nvim", -- repl provider
-      "anuvyklack/hydra.nvim",
+      "akinsho/toggleterm.nvim", -- alternative repl provider
     },
     event = "VeryLazy",
     config = function()
@@ -32,9 +39,20 @@ return {
     dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
     opts = function()
       local nn = require "notebook-navigator"
-
-      local opts = { highlighters = { cells = nn.minihipatterns_spec } }
-      return opts
+      return { highlighters = { cells = nn.minihipatterns_spec } }
     end,
+  },
+  {
+    "echasnovski/mini.ai",
+    event = "VeryLazy",
+    dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
+    opts = function()
+      local nn = require "notebook-navigator"
+      return { custom_textobjects = { h = nn.miniai_spec } }
+    end,
+  },
+  {
+    "GCBallesteros/jupytext.nvim",
+    config = true,
   }
 }
