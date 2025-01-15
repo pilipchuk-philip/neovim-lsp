@@ -21,13 +21,24 @@ return {
     local lga_actions = require("telescope-live-grep-args.actions")
     require('telescope').setup {
       defaults = {
+        layout_config = {
+          width = 0.99,
+          height = 0.99,
+          prompt_position = 'top',
+        },
         file_ignore_patterns = { "node_modules", ".mypy_cache", ".idea" },
+        sorting_strategy = 'ascending',
+        prompt_position = 'top',
         prompt_prefix = "  ",
         selection_caret = " ",
         mappings = {
           i = {
-            ['<C-u>'] = false,
-            ['<C-d>'] = false,
+            ["<C-d>"] = require('telescope.actions').preview_scrolling_down,
+            ["<C-u>"] = require('telescope.actions').preview_scrolling_up,
+          },
+          n = {
+            ["<C-d>"] = require('telescope.actions').preview_scrolling_down,
+            ["<C-u>"] = require('telescope.actions').preview_scrolling_up,
           },
         },
       },
