@@ -111,6 +111,9 @@ keymap('n', '<C-f>', ':lua require("telescope").extensions.live_grep_args.live_g
 --- Apps
 keymap({ 'n', 'v' }, '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')         -- code actions
 
+-- Custom Function Keymaps
+keymap({ 'n', 'v' }, '<leader>gl', ':lua require("custom.github-helper").main()<CR>') -- code actions
+
 
 -- Windows
 local function diagnostics_in_current_buffer()
