@@ -71,10 +71,16 @@ vim.cmd [[
 vim.cmd('highlight Visual cterm=NONE ctermbg=White ctermfg=Black guibg=White guifg=Black')
 
 -- Highlight on yank
-vim.cmd [[augroup highlight_yank
-  autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup END]]
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Hightlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+}
+)
+-- TODO: вот тут бы хорошо иметь функцию которая бы подсвечивала после вставки
+-- vim.highlight.on_post()
 
 -- Help always right
 local function open_help_on_right()
@@ -82,6 +88,7 @@ local function open_help_on_right()
     vim.cmd('wincmd L')
   end
 end
+
 vim.api.nvim_create_augroup('HelpOnRight', { clear = true })
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '*.txt',
