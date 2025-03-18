@@ -9,8 +9,13 @@ return {
     }
     if env == "WORK" then
       local ruff = require('lint').linters.ruff
+      local mypy = require('lint').linters.mypy
       ruff.args = {
         "--configure",
+        "/home/ppy/work/unixy/python/pyproject.toml"
+      }
+      mypy.args = {
+        "--config-file",
         "/home/ppy/work/unixy/python/pyproject.toml"
       }
     end

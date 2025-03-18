@@ -64,7 +64,7 @@ return {
         },
       },
     }) ]]
-    lspconfig.pyright.setup({
+    --[[ lspconfig.pyright.setup({
       on_attach = on_attach,
       settings = {
         pyright = {
@@ -78,11 +78,11 @@ return {
           },
         },
       },
-    })
-    --[[ lspconfig.jedi_language_server.setup({
+    }) ]]
+    lspconfig.jedi_language_server.setup({
       filetypes = { "python" },
       single_file_support = true,
-    }) ]]
+    })
 
     -- Signature
     require "lsp_signature".setup({
