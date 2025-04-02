@@ -38,32 +38,17 @@ return {
     }
 
 
-    mason_lspconfig.setup_handlers {
-      function(server_name)
-        require('lspconfig')[server_name].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
-        }
-      end,
-    }
+    -- mason_lspconfig.setup_handlers {
+    --   function(server_name)
+    --     require('lspconfig')[server_name].setup {
+    --       capabilities = capabilities,
+    --       on_attach = on_attach,
+    --       settings = servers[server_name],
+    --       filetypes = (servers[server_name] or {}).filetypes,
+    --     }
+    --   end,
+    -- }
 
-    -- overwrite pyright default settings
-    --[[ lspconfig.basedpyright.setup({
-      cmd = { 'basedpyright-langserver', '--stdio' },
-      filetypes = { 'python' },
-      single_file_support = true,
-      settings = {
-        basedpyright = {
-          analysis = {
-            autoSearchPaths = false,
-            useLibraryCodeForTypes = true,
-            diagnosticMode = 'openFilesOnly',
-          },
-        },
-      },
-    }) ]]
     --[[ lspconfig.pyright.setup({
       on_attach = on_attach,
       settings = {
@@ -79,6 +64,7 @@ return {
         },
       },
     }) ]]
+
     lspconfig.jedi_language_server.setup({
       filetypes = { "python" },
       single_file_support = true,

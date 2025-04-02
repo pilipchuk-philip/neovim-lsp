@@ -100,28 +100,26 @@ vim.api.nvim_create_autocmd('BufEnter', {
 vim.opt.shortmess:append("I")
 
 
--- TODO: Возможно стоит это удалить, особо смысла в нём
---
---[[ -- Tabs
--- Функция для установки заголовка вкладки как имя файла
-function Tabline()
-  local s = ''
-  for i = 1, vim.fn.tabpagenr('$') do
-    -- Переключить на вкладку i
-    local winnr = vim.fn.tabpagewinnr(i)
-    local bufnr = vim.fn.tabpagebuflist(i)[winnr]
-    local filename = vim.fn.bufname(bufnr)
-    filename = vim.fn.fnamemodify(filename, ':t') -- Получить только имя файла
-    if i == vim.fn.tabpagenr() then
-      s = s .. '%' .. i .. 'T' .. '%#TabLineSel#' .. filename .. ' %#TabLine#'
-    else
-      s = s .. '%' .. i .. 'T' .. filename .. ' '
+-- Big file
+local function big_file_detect()
+  -- Проверяем количество строк после чтения
+  if vim.fn.line('$') > 100000 then
+    print("Big file detected! Disabling some features...")
+
+    vim.cmd('syntax off')
+    vim.cmd('setlocal filetype=none')
+
+    -- Отключаем Treesitter
+    pcall(vim.cmd, 'TSBufDisable highlight')
+
+    -- Выключаем LSP
+    for _, client in pairs(vim.lsp.get_active_clients()) do
+      vim.lsp.stop_client(client.id)
     end
   end
-  s = s .. '%#TabLineFill#%T'
-  return s
 end
 
--- Установить Tabline
-vim.o.tabline = '%!v:lua.Tabline()'
- ]]
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = big_file_detect
+})
