@@ -16,9 +16,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 export MY_ENV="WORK"
 
+
 alias update_all="sudo apt update && yes | sudo apt upgrade && yes | sudo apt autoremove && yes | sudo apt autoclean"
 alias vim="nvim"
 alias vimrc="cd ~/.config/nvim/ && vim ."
+alias cat="ccat --bg=dark"
 
 alias gs="git status"
 alias gc="git branch --sort=committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} --color=always' --pointer='=>' | xargs git checkout"
@@ -45,22 +47,7 @@ alias ddp="docker-compose down && yes | docker system prune -a"
 alias lg="lazygit"
 alias tunnel_to_vagrant_db="ssh -L 5433:localhost:5432 -p 2222 -i /home/ppy/.vagrant.d/insecure_private_keys/vagrant.key.rsa vagrant@127.0.0.1"
 alias poetry="/home/ppy/.local/bin/poetry"
-# alias conda="/home/ppy/anaconda3/bin/conda"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/ppy/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/ppy/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/ppy/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/ppy/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
 export PATH="/home/ppy/.cargo/bin:$PATH"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -75,5 +62,7 @@ eval "$(pyenv init -)"
 
 
 if [ -n "$TMUX" ]; then
-    # conda activate unixy
+    export TERM=tmux-256color
+else
+    # export TERM=xterm-ghostty
 fi
