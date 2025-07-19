@@ -92,6 +92,24 @@ fh() { # fzf history
 
 #*********************************#
 # ------------------------------- #
+# ----- Neovim ------------------ #
+# ------------------------------- #
+#*********************************#
+vim() {
+    if [[ -z "$@" ]]; then
+	if [[ -f "./Session.vim" ]]; then
+	    nvim -S Session.vim -c 'lua vim.g.savesession = true'
+	else
+	    nvim -c 'lua vim.g.savesession = true'
+	fi
+    else
+    	nvim "$@"
+    fi
+}
+
+
+#*********************************#
+# ------------------------------- #
 # ----- Pyenv initialize -------- #
 # ------------------------------- #
 #*********************************#
@@ -99,3 +117,4 @@ fh() { # fzf history
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+

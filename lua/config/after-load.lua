@@ -123,3 +123,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = "*",
   callback = big_file_detect
 })
+
+-- VIM autosave session
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  pattern = "*",
+  callback = function()
+    if vim.g.savesession then
+      vim.api.nvim_command("mks!")
+    end
+  end
+})
+vim.g.savesession = true
