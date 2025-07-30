@@ -108,7 +108,7 @@ keymap({ 'n', 'v' }, '<leader>gl', ':lua require("custom.github-helper").main()<
 local function diagnostics_in_current_buffer()
   require("telescope.builtin").diagnostics({ bufnr = 0 })
 end
-keymap('n', '<C-e>', ':Telescope buffers<CR>')
+-- keymap('n', '<C-e>', ':Telescope buffers<CR>')
 keymap('n', '<C-g>', ':Telescope git_status<CR>')
 keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
 keymap('n', '<C-t>', ':TodoTelescope<CR>')
