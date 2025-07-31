@@ -125,7 +125,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- VIM autosave session
-vim.api.nvim_create_autocmd("VimLeavePre", {
+--[[ vim.api.nvim_create_autocmd("VimLeavePre", {
   pattern = "*",
   callback = function()
     if vim.g.savesession then
@@ -133,4 +133,4 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
     end
   end
 })
-vim.g.savesession = true
+vim.g.savesession = true ]]

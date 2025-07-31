@@ -5,7 +5,9 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    explorer = { enabled = true },
+    explorer = {
+      enabled = true,
+    },
     -- indent = { enabled = true },
     input = { enabled = true },
     notifier = {
@@ -30,8 +32,8 @@ return {
     { "<leader>/",       function() Snacks.picker.grep() end,                 desc = "Grep" },
     -- ????
     { "<leader>n",       function() Snacks.picker.notifications() end,        desc = "Notification History" },
-    --- TODO: remove neo-tree
-    { "<leader>e",       function() Snacks.explorer() end,                    desc = "File Explorer" },
+    { "<BS>",            function() Snacks.explorer() end,                    desc = "File Explorer" },
+    { "<leader><BS>",    function() Snacks.explorer.reveal() end,             desc = "File Explorer" },
     -- find
     -- TODO: как это работает?
     { "<leader>fp",      function() Snacks.picker.projects() end,             desc = "Projects" },
@@ -71,8 +73,6 @@ return {
     { "<leader>cR",      function() Snacks.rename.rename_file() end,          desc = "Rename File" },
     -- TODO: тоже что и мой скрипт, что-то нужно убрать
     { "<leader>gB",      function() Snacks.gitbrowse() end,                   desc = "Git Browse",            mode = { "n", "v" } },
-    -- TODO: LAZY GIT опять же что-то нужно удалить
-    { "<leader>gg",      function() Snacks.lazygit() end,                     desc = "Lazygit" },
     { "]]",              function() Snacks.words.jump(vim.v.count1) end,      desc = "Next Reference",        mode = { "n", "t" } },
     { "[[",              function() Snacks.words.jump(-vim.v.count1) end,     desc = "Prev Reference",        mode = { "n", "t" } },
     {
