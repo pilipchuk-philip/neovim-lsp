@@ -39,7 +39,6 @@ end
 
 keymap('n', 'ff', ':lua ToggleFoldMethod() <CR>', { silent = true })
 
-vim.keymap.set({ 'n', 'v' }, '<BS>', ':Neotree toggle<CR>', { silent = true })
 ------------------------------------------
 -- Basics
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -114,12 +113,10 @@ keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR
 keymap('n', '<C-t>', ':TodoTelescope<CR>')
 keymap('n', '<C-d>', diagnostics_in_current_buffer)
 
-keymap('n', '<leader>lg', ':LazyGit <CR>')                                                                -- LazyGit
 keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>') -- LazyGit
 keymap('n', '<leader>g', ':ChatGPT <CR>')                                                                 -- ChatGPT
 keymap('v', '<leader>g', ':ChatGPTEditWithInstructions <CR>')
 
-keymap('n', '<leader>n', ':Telescope neoclip<CR>')                                -- Neoclip
 keymap('n', '<leader>b', ':Telescope vim_bookmarks all<CR>', { silent = true })   -- Bookmarks
 keymap('n', '<leader>fh',
   ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>', -- Git file history
