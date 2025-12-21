@@ -124,13 +124,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   callback = big_file_detect
 })
 
--- VIM autosave session
---[[ vim.api.nvim_create_autocmd("VimLeavePre", {
-  pattern = "*",
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "markdown_inline" },
   callback = function()
-    if vim.g.savesession then
-      vim.api.nvim_command("mks!")
-    end
-  end
+    vim.treesitter.start(0, "markdown")
+  end,
 })
-vim.g.savesession = true ]]
+
