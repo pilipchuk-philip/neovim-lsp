@@ -13,11 +13,11 @@ return {
         formatters.shell({ cmd = { "ruff", "format", "--config", "/home/ppy/work/unixy/python/pyproject.toml", "-" } })
         -- TODO: можно настроить isort
       }
-      print("work")
     else
       python_formatters = {
         formatters.lsp,
         formatters.remove_trailing_whitespace,
+        formatters.shell({ cmd = { "ruff", "format", "-" } })
       }
       print("any dev")
     end

@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  branch = '0.1.x',
+  -- branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim',
@@ -16,6 +16,7 @@ return {
     },
   },
   config = function()
+    -- Neovim 0.10+ removed vim.treesitter.language.ft_to_lang; keep Telescope compatible.
     local lga_actions = require("telescope-live-grep-args.actions")
     require('telescope').setup {
       defaults = {
