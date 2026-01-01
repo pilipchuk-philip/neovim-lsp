@@ -105,3 +105,16 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.treesitter.start(0, "markdown")
   end,
 })
+
+-- 'Это fix для snacks explorer, <BS>'
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "snacks_picker_list",
+  callback = function(ev)
+    vim.schedule(function()
+      pcall(vim.keymap.del, "n", "<BS>", { buffer = ev.buf })
+      vim.keymap.set("n", "<BS>", function()
+        Snacks.explorer() -- toggle
+      end, { buffer = ev.buf, silent = true, nowait = true })
+    end)
+  end,
+})
