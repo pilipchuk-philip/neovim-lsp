@@ -7,6 +7,7 @@ return {
     bigfile = { enabled = true },
     explorer = {
       enabled = true,
+      notify = true,
     },
     -- indent = { enabled = true },
     input = { enabled = true },

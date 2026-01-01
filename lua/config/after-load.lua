@@ -99,35 +99,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
 -- Убрать начальное сообщение
 vim.opt.shortmess:append("I")
 
-
--- Big file
-local function big_file_detect()
-  -- Проверяем количество строк после чтения
-  if vim.fn.line('$') > 100000 then
-    print("Big file detected! Disabling some features...")
-
-    vim.cmd('syntax off')
-    vim.cmd('setlocal filetype=none')
-
-    -- Отключаем Treesitter
-    pcall(vim.cmd, 'TSBufDisable highlight')
-
-    -- Выключаем LSP
-    for _, client in pairs(vim.lsp.get_active_clients()) do
-      vim.lsp.stop_client(client.id)
-    end
-  end
-end
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = "*",
-  callback = big_file_detect
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "markdown_inline" },
   callback = function()
     vim.treesitter.start(0, "markdown")
   end,
 })
-
