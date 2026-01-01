@@ -4,7 +4,6 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim',
-    'tom-anders/telescope-vim-bookmarks.nvim',
     'kkharji/sqlite.lua',
     'tpope/vim-fugitive',
     {
@@ -57,8 +56,6 @@ return {
     }
 
     require("telescope").load_extension("live_grep_args")
-    require('telescope').load_extension('vim_bookmarks')
-    require("telescope").load_extension("git_file_history")
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
   end,

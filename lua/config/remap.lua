@@ -100,25 +100,6 @@ keymap('n', '<C-f>', ':lua require("telescope").extensions.live_grep_args.live_g
 keymap({ 'n', 'v' }, '<leader>ca', ':lua require("actions-preview").code_actions()<CR>')         -- code actions
 
 -- Custom Function Keymaps
-keymap({ 'n', 'v' }, '<leader>gl', ':lua require("custom.github-helper").main()<CR>') -- code actions
-
-
--- Windows
-local function diagnostics_in_current_buffer()
-  require("telescope.builtin").diagnostics({ bufnr = 0 })
-end
--- keymap('n', '<C-e>', ':Telescope buffers<CR>')
-keymap('n', '<C-g>', ':Telescope git_status<CR>')
-keymap('n', '<C-y>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>')
-keymap('n', '<C-t>', ':TodoTelescope<CR>')
-keymap('n', '<C-d>', diagnostics_in_current_buffer)
-
-keymap('n', '<leader>gf', ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>') -- LazyGit
-keymap('n', '<leader>g', ':ChatGPT <CR>')                                                                 -- ChatGPT
-keymap('v', '<leader>g', ':ChatGPTEditWithInstructions <CR>')
-
-keymap('n', '<leader>b', ':Telescope vim_bookmarks all<CR>', { silent = true })   -- Bookmarks
-keymap('n', '<leader>fh',
-  ':lua require("telescope").extensions.git_file_history.git_file_history()<CR>', -- Git file history
-  { silent = true }
-)
+keymap({ 'n', 'v' }, '<leader>gl', ':lua require("custom.github-helper").main()<CR>')             -- code actions
+-- snacks
+keymap('n', '<leader>b', ':lua require("custom.bookmarks-picker").open()<CR>', { silent = true }) -- Bookmarks
