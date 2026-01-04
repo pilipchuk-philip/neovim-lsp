@@ -17,7 +17,7 @@ return {
       hl = "NonText",
       priority = 1,
       scope = {
-        -- enabled = false,
+        enabled = false,
       }
     },
     explorer = {

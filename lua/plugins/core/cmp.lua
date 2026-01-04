@@ -13,6 +13,12 @@ return {
     local cmp = require('cmp') -- autocomple
     local lspkind = require('lspkind')
 
+    lspkind.init({
+      symbol_map = {
+        Copilot = "",
+      },
+    })
+
     --snippets
     require('snippy').setup({})
 
@@ -75,10 +81,10 @@ return {
 
       sources = {
         { name = 'nvim_lsp' },
+        { name = "copilot" },
         { name = 'nvim_lua' },
         { name = 'path' },
         { name = 'buffer' },
-        { name = 'spell' },
         { name = 'snippy' },
       },
     })

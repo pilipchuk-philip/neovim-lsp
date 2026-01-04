@@ -15,7 +15,7 @@ return {
       }
     else
       python_formatters = {
-        formatters.lsp,
+        -- formatters.lsp,
         formatters.remove_trailing_whitespace,
         formatters.shell({ cmd = { "ruff", "format", "-" } })
       }
